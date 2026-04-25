@@ -61,12 +61,9 @@ const lp = panelLabels[lang];
     <!-- Carte -->
     <div class="relative bg-sardaigne-parchemin">
 
-      <div class="flex items-baseline justify-between mb-4 px-2">
-        <div>
-          <div class="eyebrow">{t.name.map.eyebrow}</div>
-          <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">{t.name.map.title}</h3>
-        </div>
-        <div class="font-mono text-[0.6rem] text-sardaigne-sepia">{t.name.map.detailScale}</div>
+      <div class="mb-4 px-2">
+        <div class="eyebrow">{t.name.map.eyebrow}</div>
+        <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">{t.name.map.title}</h3>
       </div>
 
       <div class="relative mx-auto" style="aspect-ratio: 960 / 1759; max-width: 420px;">
@@ -110,14 +107,19 @@ const lp = panelLabels[lang];
             <polygon points="0,-30 -7,0 0,-7 7,0" fill="#9a1b1f"/>
           </g>
 
-          <g transform="translate(60, 1680)" style="pointer-events: none;">
-            <text x="0" y="0" font-family="monospace" font-size="18" fill="#1a150d" opacity="0.7">0    50    100   150 km</text>
-            <line x1="0" y1="14" x2="240" y2="14" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
-            <line x1="0" y1="9" x2="0" y2="19" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
-            <line x1="80" y1="9" x2="80" y2="19" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
-            <line x1="160" y1="9" x2="160" y2="19" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
-            <line x1="240" y1="9" x2="240" y2="19" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
-          </g>
+        </svg>
+      </div>
+
+      <!-- Échelle alignée à gauche, sous la carte -->
+      <div class="mt-4 px-2">
+        <div class="eyebrow text-sardaigne-sepia mb-2">{t.name.map.detailScale}</div>
+        <svg viewBox="0 0 280 24" class="w-[200px] h-6" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="9" font-family="monospace" font-size="10" fill="#1a150d" opacity="0.75">0     50    100   150 km</text>
+          <line x1="0" y1="18" x2="240" y2="18" stroke="#1a150d" stroke-width="1.5" opacity="0.75"/>
+          <line x1="0" y1="14" x2="0" y2="22" stroke="#1a150d" stroke-width="1.5" opacity="0.75"/>
+          <line x1="80" y1="14" x2="80" y2="22" stroke="#1a150d" stroke-width="1.5" opacity="0.75"/>
+          <line x1="160" y1="14" x2="160" y2="22" stroke="#1a150d" stroke-width="1.5" opacity="0.75"/>
+          <line x1="240" y1="14" x2="240" y2="22" stroke="#1a150d" stroke-width="1.5" opacity="0.75"/>
         </svg>
       </div>
     </div>
