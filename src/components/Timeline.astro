@@ -1,24 +1,25 @@
 ---
-import { chronologie } from '../data/chronologie';
+import { useTranslations } from '../i18n';
+import type { Lang } from '../i18n/config';
 
-const categoryColors = {
+export interface Props { lang?: Lang; }
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
+
+const categoryColors: Record<string, string> = {
   contexte: 'bg-sardaigne-sepia',
   anonima: 'bg-sardaigne-rouge',
   figure: 'bg-sardaigne-encre',
 };
 
-const categoryLabels = {
-  contexte: 'Contexte historique',
-  anonima: 'Anonima Sarda',
-  figure: 'Figure',
-};
+const categoryLabels = t.anonima.timelineCats as Record<string, string>;
+const events = t.anonima.timeline;
 ---
 
 <div class="relative">
 
-  <!-- Légende filtres -->
   <div class="flex flex-wrap gap-4 mb-12 pb-6 border-b border-sardaigne-encre/15">
-    <span class="eyebrow mr-2">Catégories</span>
+    <span class="eyebrow mr-2">{t.anonima.timelineLegend}</span>
     {Object.entries(categoryLabels).map(([key, label]) => (
       <span class="flex items-center gap-2 font-sans text-xs text-sardaigne-encre/75">
         <span class={`w-2.5 h-2.5 rounded-full ${categoryColors[key]}`}></span>
@@ -28,19 +29,17 @@ const categoryLabels = {
   </div>
 
   <div class="relative">
-    <!-- Ligne centrale -->
     <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-sardaigne-sepia/40 to-transparent md:-translate-x-[0.5px]"></div>
 
     <div class="space-y-14">
-      {chronologie.map((event, i) => {
+      {events.map((event, i) => {
         const isLeft = i % 2 === 0;
+        const cat = event.categorie as keyof typeof categoryColors;
         return (
           <div class={`relative flex flex-col md:flex-row md:items-center ${isLeft ? '' : 'md:flex-row-reverse'}`}>
-
-            <!-- Contenu -->
             <div class={`ml-12 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
               <div class={`inline-block ${isLeft ? 'md:float-right' : ''}`}>
-                <span class="eyebrow" style={`color: ${event.categorie === 'anonima' ? '#9a1b1f' : event.categorie === 'figure' ? '#1f1a14' : '#8a6a3e'}`}>
+                <span class="eyebrow" style={`color: ${cat === 'anonima' ? '#9a1b1f' : cat === 'figure' ? '#1f1a14' : '#8a6a3e'}`}>
                   {event.periode}
                 </span>
               </div>
@@ -53,21 +52,18 @@ const categoryLabels = {
               </p>
             </div>
 
-            <!-- Nœud central -->
             <div class="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-1 md:top-1/2 md:-translate-y-1/2 z-10">
               <div class="relative">
-                <div class={`w-4 h-4 rounded-full ${categoryColors[event.categorie]} ring-4 ring-sardaigne-parchemin`}></div>
-                {event.categorie === 'anonima' && (
-                  <div class={`absolute inset-0 rounded-full ${categoryColors[event.categorie]} animate-ping opacity-30`}></div>
+                <div class={`w-4 h-4 rounded-full ${categoryColors[cat]} ring-4 ring-sardaigne-parchemin`}></div>
+                {cat === 'anonima' && (
+                  <div class={`absolute inset-0 rounded-full ${categoryColors[cat]} animate-ping opacity-30`}></div>
                 )}
               </div>
             </div>
 
-            <!-- Date côté opposé -->
             <div class={`hidden md:block md:w-1/2 ${isLeft ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
               <span class="font-mono text-xs text-sardaigne-sepia tracking-widest">{event.date}</span>
             </div>
-
           </div>
         );
       })}

@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalNotice from './LegalNotice.astro';
+import { useTranslations, pageSlugs } from '../i18n';
+import { langPrefix } from '../i18n/config';
+import type { Lang } from '../i18n/config';
+
+export interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const prefix = langPrefix(lang);
+
+function pathFor(key: keyof typeof pageSlugs): string {
+  const slug = pageSlugs[key][lang];
+  if (!slug) return prefix === '' ? '/' : `${prefix}/`;
+  return `${prefix}/${slug}/`;
+}
+---
+
+<Layout title={t.banditry.metaTitle} lang={lang} pageKey="banditry">
+
+  <section class="max-w-7xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-2 font-display italic text-7xl text-sardaigne-rouge">IV</div>
+      <div class="lg:col-span-10">
+        <div class="eyebrow">{t.ui.chapter} {t.ui.chapters[3]}</div>
+        <h1 class="font-display text-5xl md:text-7xl mt-3 leading-[0.95] text-sardaigne-encre">
+          {t.banditry.chapterTitle1}<br/>
+          <em class="text-sardaigne-rouge">{t.banditry.chapterTitle2}</em>
+        </h1>
+        <p class="font-serif text-xl mt-6 text-sardaigne-encre/80 italic max-w-3xl">
+          {t.banditry.chapterSub}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pt-16">
+    <LegalNotice variant="strong" lang={lang} />
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12">
+    <div class="lg:col-span-5 lg:sticky lg:top-28">
+      <div class="eyebrow">{t.banditry.geoEyebrow}</div>
+      <h2 class="font-display text-4xl md:text-5xl mt-3 text-sardaigne-encre leading-tight">
+        {t.banditry.geoTitle1} <em class="text-sardaigne-rouge">{t.banditry.geoTitle2}</em>{t.banditry.geoTitle3}
+      </h2>
+    </div>
+    <div class="lg:col-span-7 font-serif text-lg leading-relaxed space-y-5 text-sardaigne-encre/90">
+      <p class="drop-cap">{t.banditry.geoP1}</p>
+      <p>{t.banditry.geoP2}</p>
+      <p>{t.banditry.geoP3}</p>
+    </div>
+  </section>
+
+  <section class="bg-sardaigne-encre text-sardaigne-parchemin py-24">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="eyebrow text-sardaigne-parchemin/70">{t.banditry.codeEyebrow}</div>
+        <h2 class="font-display text-4xl md:text-5xl mt-4 text-sardaigne-parchemin leading-[0.95]">
+          {t.banditry.codeTitle1} <em class="text-sardaigne-rouge">{t.banditry.codeTitle2}</em>
+        </h2>
+      </div>
+      <div class="lg:col-span-8 font-serif space-y-5 text-pierre-100 text-lg leading-relaxed">
+        <p>{t.banditry.codeP1}</p>
+        <p>{t.banditry.codeP2}</p>
+        <div class="grid md:grid-cols-3 gap-6 pt-8 mt-6 border-t border-pierre-700/60">
+          {t.banditry.codeRules.map(c => (
+            <div>
+              <div class="font-display text-2xl text-sardaigne-rouge">{c.t}</div>
+              <p class="font-serif text-sm mt-2 text-pierre-200">{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="max-w-3xl mb-12">
+      <div class="eyebrow">{t.banditry.figEyebrow}</div>
+      <h2 class="font-display text-4xl md:text-5xl mt-3 text-sardaigne-encre leading-tight">
+        {t.banditry.figTitle1}<br/><em class="text-sardaigne-rouge">{t.banditry.figTitle2}</em>
+      </h2>
+      <p class="font-serif text-lg mt-5 text-sardaigne-encre/80 leading-relaxed">
+        {t.banditry.figLead}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <article class="border border-sardaigne-encre/20 p-8 bg-sardaigne-parchemin/40">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="eyebrow text-sardaigne-sepia">{t.banditry.fig1Date}</div>
+            <h3 class="font-display text-3xl mt-2 text-sardaigne-encre">{t.banditry.fig1Name}</h3>
+          </div>
+          <div class="font-display italic text-5xl text-sardaigne-rouge/80">M</div>
+        </div>
+        <p class="font-serif mt-5 leading-relaxed text-sardaigne-encre/85">
+          {t.banditry.fig1Text}
+        </p>
+      </article>
+
+      <article class="border border-sardaigne-encre/20 p-8 bg-sardaigne-parchemin/40">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="eyebrow text-sardaigne-sepia">{t.banditry.fig2Date}</div>
+            <h3 class="font-display text-3xl mt-2 text-sardaigne-encre">{t.banditry.fig2Name}</h3>
+          </div>
+          <div class="font-display italic text-5xl text-sardaigne-rouge/80">S</div>
+        </div>
+        <p class="font-serif mt-5 leading-relaxed text-sardaigne-encre/85">
+          {t.banditry.fig2Text}
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="bg-sardaigne-parchemin border-2 border-sardaigne-encre/20 p-10 md:p-16">
+      <div class="max-w-3xl">
+        <div class="eyebrow">{t.banditry.distEyebrow}</div>
+        <h2 class="font-display text-3xl md:text-4xl mt-3 text-sardaigne-encre leading-tight">
+          {t.banditry.distTitle}
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 mt-10">
+        <div class="font-serif leading-relaxed text-sardaigne-encre/90 space-y-4">
+          <p>{t.banditry.distP1}</p>
+          <p>{t.banditry.distP2}</p>
+        </div>
+        <div class="font-serif leading-relaxed text-sardaigne-encre/90 space-y-4">
+          <p>{t.banditry.distP3}</p>
+          <p>{t.banditry.distP4}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <div class="ornament">✦</div>
+    <p class="font-display italic text-2xl md:text-3xl mt-10 text-sardaigne-encre/80">
+      {t.banditry.transitionQuote}
+    </p>
+    <a href={pathFor('anonima')} class="inline-flex items-center gap-3 mt-10 font-sans text-sm tracking-widest uppercase text-sardaigne-encre hover:text-sardaigne-rouge transition-colors border-b border-sardaigne-encre hover:border-sardaigne-rouge pb-1">
+      {t.banditry.transitionLink}
+      <span>→</span>
+    </a>
+  </section>
+
+</Layout>

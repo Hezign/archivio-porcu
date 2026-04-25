@@ -1,5 +1,13 @@
 ---
 import { communes } from '../data/communes';
+import { useTranslations } from '../i18n';
+import type { Lang } from '../i18n/config';
+
+export interface Props {
+  lang?: Lang;
+}
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
 
 // Bounding box Sardaigne (approximatif, avec marge)
 const minLat = 38.85;
@@ -27,15 +35,15 @@ const points = communes.map(c => ({
   <!-- En-tête carte style vieille cartographie -->
   <div class="flex items-start justify-between mb-6 pb-4 border-b border-sardaigne-sepia/30">
     <div>
-      <div class="eyebrow">Tabula Sardiniae</div>
-      <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">Attestation du patronyme</h3>
+      <div class="eyebrow">{t.name.map.eyebrow}</div>
+      <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">{t.name.map.title}</h3>
     </div>
     <div class="text-right hidden sm:block">
       <div class="font-mono text-xs text-sardaigne-sepia">N</div>
       <div class="w-8 h-8 border border-sardaigne-sepia flex items-center justify-center mx-auto my-1">
         <span class="font-display text-sardaigne-rouge">↑</span>
       </div>
-      <div class="font-mono text-[0.6rem] text-sardaigne-sepia">Échelle approx.</div>
+      <div class="font-mono text-[0.6rem] text-sardaigne-sepia">{t.name.map.detailScale}</div>
     </div>
   </div>
 
@@ -148,16 +156,14 @@ const points = communes.map(c => ({
 
     <!-- Détail commune -->
     <div id="commune-details" class="bg-sardaigne-encre text-sardaigne-parchemin p-6 min-h-[400px] flex flex-col">
-      <div class="eyebrow text-sardaigne-parchemin/70">Commune sélectionnée</div>
+      <div class="eyebrow text-sardaigne-parchemin/70">{t.name.map.detailEyebrow}</div>
       <h4 id="commune-name" class="font-display text-3xl mt-2 text-sardaigne-parchemin">Villaputzu</h4>
-      <div id="commune-province" class="font-sans text-xs tracking-wider uppercase text-pierre-300 mt-1">Sud Sardaigne</div>
+      <div id="commune-province" class="font-sans text-xs tracking-wider uppercase text-pierre-300 mt-1"></div>
       <div class="rule my-4 opacity-40"></div>
-      <p id="commune-notes" class="font-serif text-[0.95rem] leading-relaxed text-pierre-100">
-        Commune côtière de l'Ogliastra méridionale. Forte concentration historique du patronyme Porcu dans les registres paroissiaux du XVIIIᵉ siècle.
-      </p>
+      <p id="commune-notes" class="font-serif text-[0.95rem] leading-relaxed text-pierre-100"></p>
       <div class="mt-auto pt-6 text-[0.7rem] font-mono text-pierre-300 flex justify-between border-t border-pierre-700">
         <span id="commune-coords">39.44° N · 9.57° E</span>
-        <span class="text-sardaigne-rouge">✦ priorité</span>
+        <span class="text-sardaigne-rouge">{t.name.map.detailPriority}</span>
       </div>
     </div>
   </div>
@@ -166,13 +172,13 @@ const points = communes.map(c => ({
   <div class="mt-6 pt-4 border-t border-sardaigne-sepia/20 flex flex-wrap gap-5 items-center text-xs font-sans text-sardaigne-encre/70">
     <span class="flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-sardaigne-rouge ring-2 ring-sardaigne-rouge/30 ring-offset-1 ring-offset-sardaigne-parchemin"></span>
-      Commune prioritaire
+      {t.name.map.legendPriority}
     </span>
     <span class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-sardaigne-rouge/85"></span>
-      Attestation historique
+      {t.name.map.legendAttest}
     </span>
-    <span class="italic text-sardaigne-sepia">Cliquez sur un point pour en savoir plus</span>
+    <span class="italic text-sardaigne-sepia">{t.name.map.legendHint}</span>
   </div>
 
 </div>

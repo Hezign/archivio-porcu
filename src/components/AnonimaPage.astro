@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Timeline from './Timeline.astro';
+import { useTranslations, pageSlugs } from '../i18n';
+import { langPrefix } from '../i18n/config';
+import type { Lang } from '../i18n/config';
+
+export interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const prefix = langPrefix(lang);
+
+function pathFor(key: keyof typeof pageSlugs): string {
+  const slug = pageSlugs[key][lang];
+  if (!slug) return prefix === '' ? '/' : `${prefix}/`;
+  return `${prefix}/${slug}/`;
+}
+---
+
+<Layout title={t.anonima.metaTitle} lang={lang} pageKey="anonima">
+
+  <section class="max-w-7xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-2 font-display italic text-7xl text-sardaigne-rouge">V</div>
+      <div class="lg:col-span-10">
+        <div class="eyebrow">{t.ui.chapter} {t.ui.chapters[4]}</div>
+        <h1 class="font-display text-5xl md:text-7xl mt-3 leading-[0.95] text-sardaigne-encre">
+          {t.anonima.chapterTitle1}<br/>
+          <em class="text-sardaigne-rouge">{t.anonima.chapterTitle2}</em>
+        </h1>
+        <p class="font-serif text-xl mt-6 text-sardaigne-encre/80 italic max-w-3xl">
+          {t.anonima.chapterSub}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-20 overflow-hidden">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5 min-w-0">
+        <div class="font-display leading-[0.85] text-sardaigne-rouge break-words" style="font-size:clamp(3.5rem,11vw,9rem);">
+          ~150
+        </div>
+        <div class="eyebrow mt-4">{t.anonima.bigStatLabel}</div>
+      </div>
+      <div class="lg:col-span-7 font-serif text-lg leading-relaxed text-sardaigne-encre/90 space-y-5">
+        <p class="drop-cap">{t.anonima.bigStatP1}</p>
+        <p>{t.anonima.bigStatP2}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-sardaigne-encre text-sardaigne-parchemin py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-16">
+        <div class="eyebrow text-sardaigne-parchemin/70">{t.anonima.modeEyebrow}</div>
+        <h2 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-parchemin leading-[0.95]">
+          {t.anonima.modeTitle}
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-pierre-800">
+        {t.anonima.modeSteps.map(step => (
+          <div class="bg-sardaigne-encre p-8">
+            <div class="font-display text-5xl italic text-sardaigne-rouge/80">{step.num}</div>
+            <h3 class="font-display text-xl text-sardaigne-parchemin mt-3">{step.t}</h3>
+            <p class="font-serif text-sm text-pierre-200 mt-3 leading-relaxed">{step.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="max-w-3xl mb-16">
+      <div class="eyebrow">{t.anonima.chronoEyebrow}</div>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 text-sardaigne-encre leading-[0.95]">
+        {t.anonima.chronoTitle1}<br/>
+        <em class="text-sardaigne-rouge">{t.anonima.chronoTitle2}</em>
+      </h2>
+      <p class="font-serif text-lg mt-5 text-sardaigne-encre/80 leading-relaxed">
+        {t.anonima.chronoLead}
+      </p>
+    </div>
+    <Timeline lang={lang} />
+  </section>
+
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="bg-sardaigne-parchemin border-2 border-sardaigne-rouge p-10 md:p-16 relative">
+      <div class="absolute -top-4 left-10 bg-sardaigne-parchemin px-4">
+        <span class="eyebrow text-sardaigne-rouge">{t.anonima.balanceEyebrow}</span>
+      </div>
+
+      <h2 class="font-display text-4xl md:text-5xl text-sardaigne-encre leading-tight max-w-3xl">
+        {t.anonima.balanceTitle}
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-10 mt-10 font-serif text-lg leading-relaxed">
+        <div class="space-y-4 text-sardaigne-encre/90">
+          <p>{t.anonima.balanceP1}</p>
+        </div>
+        <div class="space-y-4 text-sardaigne-encre/90">
+          <p>{t.anonima.balanceP2}</p>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-sardaigne-encre/15">
+        <div class="eyebrow mb-5">{t.anonima.sourcesEyebrow}</div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm font-sans">
+          {t.anonima.sources.map(s => (
+            <div>
+              <div class="font-semibold text-sardaigne-encre">{s.t}</div>
+              <div class="text-sardaigne-encre/70 mt-1">{s.d}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <div class="ornament">✦</div>
+    <p class="font-display italic text-2xl md:text-3xl mt-10 text-sardaigne-encre/80">
+      {t.anonima.transitionQuote}
+    </p>
+    <a href={pathFor('genealogy')} class="inline-flex items-center gap-3 mt-10 font-sans text-sm tracking-widest uppercase text-sardaigne-encre hover:text-sardaigne-rouge transition-colors border-b border-sardaigne-encre hover:border-sardaigne-rouge pb-1">
+      {t.anonima.transitionLink}
+      <span>→</span>
+    </a>
+  </section>
+
+</Layout>
