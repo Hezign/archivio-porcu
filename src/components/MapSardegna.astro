@@ -9,48 +9,56 @@ export interface Props {
 const { lang = 'fr' } = Astro.props;
 const t = useTranslations(lang);
 
-// ============================================================
-// Calibration de la projection sur l'image PNG officielle
-// Image: public/images/sardegna-map.png (960 x 1759 px)
-// ============================================================
-
-// Dimensions réelles de l'image
+// Dimensions de l'image authentique
 const W = 960;
 const H = 1759;
 
-// Bounding box géographique réelle de la Sardaigne (incluant satellites)
-// Ajustée précisément aux contours de l'image
-const minLat = 38.83;  // Capo Spartivento (extrême sud, hors îles)
-const maxLat = 41.27;  // Capo Testa (extrême nord)
-const minLng = 8.13;   // Capo Caccia / San Pietro (extrême ouest)
-const maxLng = 9.84;   // Capo Comino (extrême est)
+// Bounding box géographique (calibrée sur l'image)
+const minLat = 38.83;
+const maxLat = 41.27;
+const minLng = 8.13;
+const maxLng = 9.84;
 
 function project(lat: number, lng: number) {
-  // Le contenu cartographique occupe l'image avec un peu de marge
-  // Marges dérivées de l'observation visuelle de l'image fournie
-  const marginLeft = 0.06;   // 6% de marge à gauche
+  const marginLeft = 0.06;
   const marginRight = 0.06;
   const marginTop = 0.03;
   const marginBottom = 0.03;
-
   const usableW = W * (1 - marginLeft - marginRight);
   const usableH = H * (1 - marginTop - marginBottom);
-
   const x = W * marginLeft + ((lng - minLng) / (maxLng - minLng)) * usableW;
   const y = H * marginTop + (1 - (lat - minLat) / (maxLat - minLat)) * usableH;
-
   return { x, y };
 }
 
-const points = communes.map(c => ({
-  ...c,
-  ...project(c.lat, c.lng),
-}));
+// Décalages manuels du libellé par commune, pour éviter chevauchements
+// Format: { dx, dy, anchor } où anchor = 'start' (texte à droite) ou 'end' (à gauche)
+const labelOffsets: Record<string, { dx: number; dy: number; anchor: 'start' | 'end' }> = {
+  // Villaputzu et San Vito sont quasi-superposés au sud-est
+  // Villaputzu en bas à droite, San Vito en haut à gauche
+  'Villaputzu':  { dx: 28,  dy: 16,  anchor: 'start' },
+  'San Vito':    { dx: -28, dy: -8,  anchor: 'end' },
+
+  // Les autres : libellé à droite par défaut
+  'Lula':        { dx: 28,  dy: 8,   anchor: 'start' },
+  'Ghilarza':    { dx: -28, dy: 8,   anchor: 'end' },
+  'Nuoro':       { dx: 28,  dy: 8,   anchor: 'start' },
+  'Buddusò':     { dx: 28,  dy: 8,   anchor: 'start' },
+  'Samassi':     { dx: -28, dy: 8,   anchor: 'end' },
+  'Montresta':   { dx: -28, dy: 8,   anchor: 'end' },
+  'Sarule':      { dx: 28,  dy: 8,   anchor: 'start' },
+};
+
+const points = communes.map(c => {
+  const proj = project(c.lat, c.lng);
+  const off = labelOffsets[c.nom] || { dx: 28, dy: 8, anchor: 'start' };
+  return { ...c, ...proj, labelDx: off.dx, labelDy: off.dy, anchor: off.anchor };
+});
 ---
 
 <div class="bg-sardaigne-parchemin border border-sardaigne-encre/15 p-4 md:p-8">
 
-  <div class="grid lg:grid-cols-[1fr_320px] gap-6">
+  <div class="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
 
     <div class="relative bg-sardaigne-parchemin">
 
@@ -62,21 +70,22 @@ const points = communes.map(c => ({
         <div class="font-mono text-[0.6rem] text-sardaigne-sepia">{t.name.map.detailScale}</div>
       </div>
 
-      <!-- Carte avec image authentique en fond + SVG superposé pour les points -->
-      <div class="relative" style="aspect-ratio: 960 / 1759; max-width: 600px; margin: 0 auto;">
+      <!-- Carte : taille réduite, image en fond, SVG cliquable au-dessus -->
+      <div class="relative mx-auto" style="aspect-ratio: 960 / 1759; max-width: 420px;">
 
-        <!-- Image authentique de la Sardaigne (Wikipedia/Wikimedia) -->
+        <!-- Image authentique en fond, NON cliquable -->
         <img
           src="/images/sardegna-map.png"
           alt="Carte de la Sardaigne"
-          class="absolute inset-0 w-full h-full object-contain"
+          class="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
           loading="lazy"
+          draggable="false"
         />
 
-        <!-- SVG superposé pour les points-communes interactifs -->
+        <!-- SVG superposé : reçoit les clics -->
         <svg viewBox={`0 0 ${W} ${H}`} class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
-          <!-- Régions historiques (texte en filigrane) -->
+          <!-- Régions historiques -->
           <g style="pointer-events: none;">
             <text x="540" y="380" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="32" fill="#8a6a3e" opacity="0.55">Gallura</text>
             <text x="560" y="780" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="34" fill="#8a6a3e" opacity="0.55">Barbagia</text>
@@ -86,14 +95,59 @@ const points = communes.map(c => ({
             <text x="380" y="270" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="26" fill="#8a6a3e" opacity="0.55">Sassarese</text>
           </g>
 
-          <!-- Points-communes -->
+          <!-- Points-communes : zone clic large, point + halo + label avec décalage personnalisé -->
           {points.map((p, i) => (
-            <g class="commune-point cursor-pointer" data-index={i} style="transition: all 0.3s;">
+            <g class="commune-point" data-index={i} style="cursor: pointer;">
+              <!-- Halo pulsé pour les points prioritaires -->
               {p.priorite && (
-                <circle cx={p.x} cy={p.y} r="32" fill="#9a1b1f" opacity="0.18" class="pulse-ring"/>
+                <circle cx={p.x} cy={p.y} r="32" fill="#9a1b1f" opacity="0.18" class="pulse-ring" style="pointer-events: none;"/>
               )}
-              <circle cx={p.x} cy={p.y} r={p.priorite ? 14 : 10} fill="#9a1b1f" stroke="#f1e8d4" stroke-width="4"/>
-              <text x={p.x + 22} y={p.y + 8} font-family="Inter Tight, sans-serif" font-size="24" font-weight="600" fill="#1f1a14" style="paint-order: stroke; stroke: #f1e8d4; stroke-width: 4px; stroke-linejoin: round;">{p.nom}</text>
+
+              <!-- Trait reliant le point à son libellé pour clarifier en cas de décalage important -->
+              {Math.abs(p.labelDx) > 15 && (
+                <line
+                  x1={p.x}
+                  y1={p.y}
+                  x2={p.x + p.labelDx * 0.5}
+                  y2={p.y + p.labelDy * 0.5}
+                  stroke="#9a1b1f"
+                  stroke-width="1.5"
+                  opacity="0.4"
+                  style="pointer-events: none;"
+                />
+              )}
+
+              <!-- Le point lui-même (cliquable) -->
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r={p.priorite ? 14 : 10}
+                fill="#9a1b1f"
+                stroke="#f1e8d4"
+                stroke-width="4"
+                class="commune-dot"
+              />
+
+              <!-- Zone de clic invisible plus large pour mobile -->
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r="28"
+                fill="transparent"
+                class="commune-hitbox"
+              />
+
+              <!-- Libellé avec halo blanc pour lisibilité -->
+              <text
+                x={p.x + p.labelDx}
+                y={p.y + p.labelDy}
+                text-anchor={p.anchor}
+                font-family="Inter Tight, sans-serif"
+                font-size="26"
+                font-weight="700"
+                fill="#1f1a14"
+                style="paint-order: stroke; stroke: #f1e8d4; stroke-width: 6px; stroke-linejoin: round; pointer-events: none;"
+              >{p.nom}</text>
             </g>
           ))}
 
@@ -124,12 +178,12 @@ const points = communes.map(c => ({
     <div id="commune-details" class="bg-sardaigne-encre text-sardaigne-parchemin p-6 min-h-[400px] flex flex-col">
       <div class="eyebrow text-sardaigne-parchemin/70">{t.name.map.detailEyebrow}</div>
       <h4 id="commune-name" class="font-display text-3xl mt-2 text-sardaigne-parchemin">Villaputzu</h4>
-      <div id="commune-province" class="font-sans text-xs tracking-wider uppercase text-pierre-300 mt-1"></div>
+      <div id="commune-province" class="font-sans text-xs tracking-wider uppercase text-pierre-300 mt-1">Sud Sardaigne</div>
       <div class="rule my-4 opacity-40"></div>
-      <p id="commune-notes" class="font-serif text-[0.95rem] leading-relaxed text-pierre-100"></p>
+      <p id="commune-notes" class="font-serif text-[0.95rem] leading-relaxed text-pierre-100">Cliquez sur un point pour afficher les informations.</p>
       <div class="mt-auto pt-6 text-[0.7rem] font-mono text-pierre-300 flex justify-between border-t border-pierre-700">
         <span id="commune-coords">39.44° N · 9.57° E</span>
-        <span class="text-sardaigne-rouge">{t.name.map.detailPriority}</span>
+        <span class="text-sardaigne-rouge" id="commune-priority">{t.name.map.detailPriority}</span>
       </div>
     </div>
   </div>
@@ -149,22 +203,39 @@ const points = communes.map(c => ({
 </div>
 
 <script define:vars={{ communes }}>
+  // Sélection des éléments cliquables (groupes <g> avec class commune-point)
   const points = document.querySelectorAll('.commune-point');
   const nameEl = document.getElementById('commune-name');
   const provEl = document.getElementById('commune-province');
   const notesEl = document.getElementById('commune-notes');
   const coordsEl = document.getElementById('commune-coords');
+  const priorityEl = document.getElementById('commune-priority');
 
-  points.forEach((point) => {
-    point.addEventListener('click', () => {
-      const i = parseInt(point.dataset.index, 10);
-      const c = communes[i];
-      if (!c) return;
-      if (nameEl) nameEl.textContent = c.nom;
-      if (provEl) provEl.textContent = c.province || '';
-      if (notesEl) notesEl.textContent = c.notes || '';
-      if (coordsEl) coordsEl.textContent = `${c.lat.toFixed(2)}° N · ${c.lng.toFixed(2)}° E`;
+  function selectCommune(i) {
+    const c = communes[i];
+    if (!c) return;
+    if (nameEl) nameEl.textContent = c.nom;
+    if (provEl) provEl.textContent = c.province || '';
+    if (notesEl) notesEl.textContent = c.notes || '';
+    if (coordsEl) coordsEl.textContent = `${c.lat.toFixed(2)}° N · ${c.lng.toFixed(2)}° E`;
+    if (priorityEl) priorityEl.style.visibility = c.priorite ? 'visible' : 'hidden';
+
+    // Highlight visuel : grossir le point sélectionné
+    document.querySelectorAll('.commune-dot').forEach(dot => {
+      dot.setAttribute('r', dot.getAttribute('data-base-r') || '10');
     });
+    const selectedDot = points[i].querySelector('.commune-dot');
+    if (selectedDot) {
+      if (!selectedDot.getAttribute('data-base-r')) {
+        selectedDot.setAttribute('data-base-r', selectedDot.getAttribute('r'));
+      }
+      selectedDot.setAttribute('r', '18');
+    }
+  }
+
+  points.forEach((point, i) => {
+    point.addEventListener('click', () => selectCommune(i));
+    point.addEventListener('touchend', (e) => { e.preventDefault(); selectCommune(i); });
   });
 </script>
 
@@ -177,5 +248,8 @@ const points = communes.map(c => ({
     transform-origin: center;
     transform-box: fill-box;
     animation: pulse-scale 2.5s ease-in-out infinite;
+  }
+  .commune-point:hover .commune-dot {
+    filter: drop-shadow(0 0 8px rgba(154, 27, 31, 0.6));
   }
 </style>
