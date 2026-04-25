@@ -1,0 +1,84 @@
+---
+// Drapeau de la Sardaigne — version officielle (loi régionale n° 10 du 15 avril 1999)
+// Bandeau sur le FRONT, têtes tournées vers la droite (côté flottant)
+// Proportions réglementaires : 2:3 (hauteur:largeur)
+// SVG vectoriel, fond transparent, dimensions paramétrables
+
+export interface Props {
+  size?: number; // largeur en px (la hauteur sera 2/3)
+  className?: string;
+}
+const { size = 300, className = '' } = Astro.props;
+const w = size;
+const h = Math.round(size * 2 / 3);
+---
+
+<svg
+  viewBox="0 0 600 400"
+  width={w}
+  height={h}
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Drapeau officiel de la Sardaigne (1999) - Quattro Mori avec bandeau sur le front"
+>
+  <!-- Fond blanc -->
+  <rect x="0" y="0" width="600" height="400" fill="#ffffff"/>
+
+  <!-- Croix de Saint-Georges (rouge) -->
+  <!-- Bras horizontal -->
+  <rect x="0" y="170" width="600" height="60" fill="#cc1f1f"/>
+  <!-- Bras vertical -->
+  <rect x="270" y="0" width="60" height="400" fill="#cc1f1f"/>
+
+  <!-- ============ Quatre têtes de Maures ============ -->
+  <!-- Toutes tournées vers la droite (vers le côté flottant), bandeau sur le front -->
+
+  <!-- Têtes positionnées au centre de chaque quart -->
+  <!-- Q1 (haut-gauche) : centre 135, 85 -->
+  <!-- Q2 (haut-droit)  : centre 465, 85 -->
+  <!-- Q3 (bas-gauche)  : centre 135, 315 -->
+  <!-- Q4 (bas-droit)   : centre 465, 315 -->
+
+  <g id="moor-q1" transform="translate(135, 85)">
+    <!-- Profil tourné vers la droite -->
+    <g transform="scale(1, 1)">
+      <!-- Crâne et visage -->
+      <path d="M -28,-15 C -32,-30 -22,-42 -8,-44 C 8,-46 22,-40 28,-25 C 32,-10 30,8 24,18 C 18,28 8,32 -2,30 C -8,29 -14,26 -18,20 L -22,24 L -26,20 L -28,12 L -32,8 L -30,-2 L -28,-15 Z" fill="#1a1a1a"/>
+      <!-- Bandeau blanc sur le front -->
+      <path d="M -30,-22 L 30,-22 L 30,-12 L -30,-12 Z" fill="#ffffff"/>
+      <!-- Détail oeil (visible) -->
+      <ellipse cx="10" cy="-2" rx="2.5" ry="1.5" fill="#ffffff"/>
+      <!-- Détail bouche -->
+      <path d="M 14,12 L 22,11" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+    </g>
+  </g>
+
+  <g id="moor-q2" transform="translate(465, 85)">
+    <g transform="scale(1, 1)">
+      <path d="M -28,-15 C -32,-30 -22,-42 -8,-44 C 8,-46 22,-40 28,-25 C 32,-10 30,8 24,18 C 18,28 8,32 -2,30 C -8,29 -14,26 -18,20 L -22,24 L -26,20 L -28,12 L -32,8 L -30,-2 L -28,-15 Z" fill="#1a1a1a"/>
+      <path d="M -30,-22 L 30,-22 L 30,-12 L -30,-12 Z" fill="#ffffff"/>
+      <ellipse cx="10" cy="-2" rx="2.5" ry="1.5" fill="#ffffff"/>
+      <path d="M 14,12 L 22,11" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+    </g>
+  </g>
+
+  <g id="moor-q3" transform="translate(135, 315)">
+    <g transform="scale(1, 1)">
+      <path d="M -28,-15 C -32,-30 -22,-42 -8,-44 C 8,-46 22,-40 28,-25 C 32,-10 30,8 24,18 C 18,28 8,32 -2,30 C -8,29 -14,26 -18,20 L -22,24 L -26,20 L -28,12 L -32,8 L -30,-2 L -28,-15 Z" fill="#1a1a1a"/>
+      <path d="M -30,-22 L 30,-22 L 30,-12 L -30,-12 Z" fill="#ffffff"/>
+      <ellipse cx="10" cy="-2" rx="2.5" ry="1.5" fill="#ffffff"/>
+      <path d="M 14,12 L 22,11" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+    </g>
+  </g>
+
+  <g id="moor-q4" transform="translate(465, 315)">
+    <g transform="scale(1, 1)">
+      <path d="M -28,-15 C -32,-30 -22,-42 -8,-44 C 8,-46 22,-40 28,-25 C 32,-10 30,8 24,18 C 18,28 8,32 -2,30 C -8,29 -14,26 -18,20 L -22,24 L -26,20 L -28,12 L -32,8 L -30,-2 L -28,-15 Z" fill="#1a1a1a"/>
+      <path d="M -30,-22 L 30,-22 L 30,-12 L -30,-12 Z" fill="#ffffff"/>
+      <ellipse cx="10" cy="-2" rx="2.5" ry="1.5" fill="#ffffff"/>
+      <path d="M 14,12 L 22,11" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+    </g>
+  </g>
+
+</svg>

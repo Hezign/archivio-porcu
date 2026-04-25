@@ -9,11 +9,11 @@ export interface Props {
 const { lang = 'fr' } = Astro.props;
 const t = useTranslations(lang);
 
-// Dimensions de l'image authentique
+// Image dimensions
 const W = 960;
 const H = 1759;
 
-// Bounding box géographique (calibrée sur l'image)
+// Bounding box géographique
 const minLat = 38.83;
 const maxLat = 41.27;
 const minLng = 8.13;
@@ -31,15 +31,9 @@ function project(lat: number, lng: number) {
   return { x, y };
 }
 
-// Décalages manuels du libellé par commune, pour éviter chevauchements
-// Format: { dx, dy, anchor } où anchor = 'start' (texte à droite) ou 'end' (à gauche)
 const labelOffsets: Record<string, { dx: number; dy: number; anchor: 'start' | 'end' }> = {
-  // Villaputzu et San Vito sont quasi-superposés au sud-est
-  // Villaputzu en bas à droite, San Vito en haut à gauche
   'Villaputzu':  { dx: 28,  dy: 16,  anchor: 'start' },
   'San Vito':    { dx: -28, dy: -8,  anchor: 'end' },
-
-  // Les autres : libellé à droite par défaut
   'Lula':        { dx: 28,  dy: 8,   anchor: 'start' },
   'Ghilarza':    { dx: -28, dy: 8,   anchor: 'end' },
   'Nuoro':       { dx: 28,  dy: 8,   anchor: 'start' },
@@ -54,26 +48,62 @@ const points = communes.map(c => {
   const off = labelOffsets[c.nom] || { dx: 28, dy: 8, anchor: 'start' };
   return { ...c, ...proj, labelDx: off.dx, labelDy: off.dy, anchor: off.anchor };
 });
+
+// Labels for the panel — translated
+const panelLabels = {
+  fr: {
+    region: 'Région',
+    province: 'Province',
+    population: 'Population',
+    altitude: 'Altitude',
+    attestation: 'Attestation',
+    coords: 'Coordonnées',
+    inhabitants: 'habitants',
+    meters: 'm',
+    clickHint: 'Cliquez sur un point de la carte pour afficher les détails de la commune.',
+  },
+  it: {
+    region: 'Regione',
+    province: 'Provincia',
+    population: 'Popolazione',
+    altitude: 'Altitudine',
+    attestation: 'Attestazione',
+    coords: 'Coordinate',
+    inhabitants: 'abitanti',
+    meters: 'm',
+    clickHint: 'Clicca su un punto della mappa per visualizzare i dettagli del comune.',
+  },
+  en: {
+    region: 'Region',
+    province: 'Province',
+    population: 'Population',
+    altitude: 'Altitude',
+    attestation: 'Attestation',
+    coords: 'Coordinates',
+    inhabitants: 'inhabitants',
+    meters: 'm',
+    clickHint: 'Click on a map point to display commune details.',
+  },
+};
+const lp = panelLabels[lang];
 ---
 
-<div class="bg-sardaigne-parchemin border border-sardaigne-encre/15 p-4 md:p-8">
+<div class="bg-sardaigne-parchemin">
 
-  <div class="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
+  <!-- Carte alignée à GAUCHE, panneau plus large à droite -->
+  <div class="grid lg:grid-cols-[420px_1fr] gap-8 items-start">
 
-    <div class="relative bg-sardaigne-parchemin">
+    <!-- COLONNE GAUCHE : carte -->
+    <div class="relative">
 
-      <div class="flex items-baseline justify-between mb-4 px-2">
-        <div>
-          <div class="eyebrow">{t.name.map.eyebrow}</div>
-          <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">{t.name.map.title}</h3>
-        </div>
-        <div class="font-mono text-[0.6rem] text-sardaigne-sepia">{t.name.map.detailScale}</div>
+      <div class="mb-4">
+        <div class="eyebrow">{t.name.map.eyebrow}</div>
+        <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre mt-1">{t.name.map.title}</h3>
       </div>
 
-      <!-- Carte : taille réduite, image en fond, SVG cliquable au-dessus -->
-      <div class="relative mx-auto" style="aspect-ratio: 960 / 1759; max-width: 420px;">
+      <!-- Container carte : pas de fond, pas de border, alignement à gauche naturel -->
+      <div class="relative" style="aspect-ratio: 960 / 1759; max-width: 420px;">
 
-        <!-- Image authentique en fond, NON cliquable -->
         <img
           src="/images/sardegna-map.png"
           alt="Carte de la Sardaigne"
@@ -82,28 +112,23 @@ const points = communes.map(c => {
           draggable="false"
         />
 
-        <!-- SVG superposé : reçoit les clics -->
         <svg viewBox={`0 0 ${W} ${H}`} class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
-          <!-- Régions historiques -->
+          <!-- Régions historiques (noms en filigrane) -->
           <g style="pointer-events: none;">
-            <text x="540" y="380" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="32" fill="#8a6a3e" opacity="0.55">Gallura</text>
-            <text x="560" y="780" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="34" fill="#8a6a3e" opacity="0.55">Barbagia</text>
-            <text x="380" y="1020" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="30" fill="#8a6a3e" opacity="0.55">Oristano</text>
-            <text x="700" y="1080" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="28" fill="#8a6a3e" opacity="0.55">Ogliastra</text>
-            <text x="500" y="1380" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="32" fill="#8a6a3e" opacity="0.55">Campidano</text>
-            <text x="380" y="270" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="26" fill="#8a6a3e" opacity="0.55">Sassarese</text>
+            <text x="540" y="380" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="32" fill="#8a6a3e" opacity="0.5">Gallura</text>
+            <text x="560" y="780" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="34" fill="#8a6a3e" opacity="0.5">Barbagia</text>
+            <text x="380" y="1020" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="30" fill="#8a6a3e" opacity="0.5">Oristano</text>
+            <text x="700" y="1080" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="28" fill="#8a6a3e" opacity="0.5">Ogliastra</text>
+            <text x="500" y="1380" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="32" fill="#8a6a3e" opacity="0.5">Campidano</text>
+            <text x="380" y="270" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="26" fill="#8a6a3e" opacity="0.5">Sassarese</text>
           </g>
 
-          <!-- Points-communes : zone clic large, point + halo + label avec décalage personnalisé -->
           {points.map((p, i) => (
             <g class="commune-point" data-index={i} style="cursor: pointer;">
-              <!-- Halo pulsé pour les points prioritaires -->
               {p.priorite && (
                 <circle cx={p.x} cy={p.y} r="32" fill="#9a1b1f" opacity="0.18" class="pulse-ring" style="pointer-events: none;"/>
               )}
-
-              <!-- Trait reliant le point à son libellé pour clarifier en cas de décalage important -->
               {Math.abs(p.labelDx) > 15 && (
                 <line
                   x1={p.x}
@@ -116,8 +141,6 @@ const points = communes.map(c => {
                   style="pointer-events: none;"
                 />
               )}
-
-              <!-- Le point lui-même (cliquable) -->
               <circle
                 cx={p.x}
                 cy={p.y}
@@ -127,8 +150,6 @@ const points = communes.map(c => {
                 stroke-width="4"
                 class="commune-dot"
               />
-
-              <!-- Zone de clic invisible plus large pour mobile -->
               <circle
                 cx={p.x}
                 cy={p.y}
@@ -136,8 +157,6 @@ const points = communes.map(c => {
                 fill="transparent"
                 class="commune-hitbox"
               />
-
-              <!-- Libellé avec halo blanc pour lisibilité -->
               <text
                 x={p.x + p.labelDx}
                 y={p.y + p.labelDy}
@@ -151,7 +170,6 @@ const points = communes.map(c => {
             </g>
           ))}
 
-          <!-- Boussole -->
           <g transform="translate(880, 130)" opacity="0.7" style="pointer-events: none;">
             <circle cx="0" cy="0" r="42" fill="#f1e8d4" stroke="#1a150d" stroke-width="1.5"/>
             <line x1="0" y1="-42" x2="0" y2="42" stroke="#1a150d" stroke-width="1"/>
@@ -160,7 +178,6 @@ const points = communes.map(c => {
             <polygon points="0,-30 -7,0 0,-7 7,0" fill="#9a1b1f"/>
           </g>
 
-          <!-- Échelle -->
           <g transform="translate(60, 1680)" style="pointer-events: none;">
             <text x="0" y="0" font-family="monospace" font-size="18" fill="#1a150d" opacity="0.7">0    50    100   150 km</text>
             <line x1="0" y1="14" x2="240" y2="14" stroke="#1a150d" stroke-width="2" opacity="0.7"/>
@@ -172,57 +189,122 @@ const points = communes.map(c => {
 
         </svg>
       </div>
-    </div>
 
-    <!-- Détail commune -->
-    <div id="commune-details" class="bg-sardaigne-encre text-sardaigne-parchemin p-6 min-h-[400px] flex flex-col">
-      <div class="eyebrow text-sardaigne-parchemin/70">{t.name.map.detailEyebrow}</div>
-      <h4 id="commune-name" class="font-display text-3xl mt-2 text-sardaigne-parchemin">Villaputzu</h4>
-      <div id="commune-province" class="font-sans text-xs tracking-wider uppercase text-pierre-300 mt-1">Sud Sardaigne</div>
-      <div class="rule my-4 opacity-40"></div>
-      <p id="commune-notes" class="font-serif text-[0.95rem] leading-relaxed text-pierre-100">Cliquez sur un point pour afficher les informations.</p>
-      <div class="mt-auto pt-6 text-[0.7rem] font-mono text-pierre-300 flex justify-between border-t border-pierre-700">
-        <span id="commune-coords">39.44° N · 9.57° E</span>
-        <span class="text-sardaigne-rouge" id="commune-priority">{t.name.map.detailPriority}</span>
+      <!-- Légende sous la carte -->
+      <div class="mt-6 pt-4 border-t border-sardaigne-sepia/20 flex flex-wrap gap-4 items-center text-xs font-sans text-sardaigne-encre/70">
+        <span class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-sardaigne-rouge ring-2 ring-sardaigne-rouge/30 ring-offset-1 ring-offset-sardaigne-parchemin"></span>
+          {t.name.map.legendPriority}
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-sardaigne-rouge/85"></span>
+          {t.name.map.legendAttest}
+        </span>
       </div>
     </div>
-  </div>
 
-  <div class="mt-6 pt-4 border-t border-sardaigne-sepia/20 flex flex-wrap gap-5 items-center text-xs font-sans text-sardaigne-encre/70">
-    <span class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-sardaigne-rouge ring-2 ring-sardaigne-rouge/30 ring-offset-1 ring-offset-sardaigne-parchemin"></span>
-      {t.name.map.legendPriority}
-    </span>
-    <span class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-sardaigne-rouge/85"></span>
-      {t.name.map.legendAttest}
-    </span>
-    <span class="italic text-sardaigne-sepia">{t.name.map.legendHint}</span>
+    <!-- COLONNE DROITE : panneau de détails ENRICHI -->
+    <div id="commune-details" class="bg-sardaigne-encre text-sardaigne-parchemin p-8 md:p-10 min-h-[600px] flex flex-col relative overflow-hidden">
+
+      <!-- Décor en arrière-plan -->
+      <div class="absolute top-0 right-0 w-48 h-48 opacity-[0.04] pointer-events-none">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="#fff" stroke-width="0.5"/>
+        </svg>
+      </div>
+
+      <!-- En-tête commune -->
+      <div class="relative">
+        <div class="flex items-baseline justify-between gap-4 mb-2">
+          <div class="eyebrow text-sardaigne-parchemin/70">{t.name.map.detailEyebrow}</div>
+          <span class="text-sardaigne-rouge font-mono text-xs tracking-widest" id="commune-priority">{t.name.map.detailPriority}</span>
+        </div>
+        <h4 id="commune-name" class="font-display text-4xl md:text-5xl text-sardaigne-parchemin leading-tight">Villaputzu</h4>
+        <div id="commune-region" class="font-serif italic text-pierre-200 mt-2"></div>
+      </div>
+
+      <div class="rule my-6 opacity-30"></div>
+
+      <!-- Tableau de données enrichi -->
+      <dl class="grid grid-cols-2 gap-x-6 gap-y-4 text-sm font-sans">
+        <div>
+          <dt class="eyebrow text-pierre-300 mb-1">{lp.province}</dt>
+          <dd id="commune-province" class="font-serif text-base text-sardaigne-parchemin"></dd>
+        </div>
+        <div>
+          <dt class="eyebrow text-pierre-300 mb-1">{lp.attestation}</dt>
+          <dd id="commune-attestation" class="font-serif text-base text-sardaigne-parchemin"></dd>
+        </div>
+        <div>
+          <dt class="eyebrow text-pierre-300 mb-1">{lp.population}</dt>
+          <dd id="commune-population" class="font-serif text-base text-sardaigne-parchemin"></dd>
+        </div>
+        <div>
+          <dt class="eyebrow text-pierre-300 mb-1">{lp.altitude}</dt>
+          <dd id="commune-altitude" class="font-serif text-base text-sardaigne-parchemin"></dd>
+        </div>
+      </dl>
+
+      <div class="rule my-6 opacity-30"></div>
+
+      <!-- Notes longues -->
+      <p id="commune-notes" class="font-serif text-[1rem] leading-relaxed text-pierre-100 flex-1">{lp.clickHint}</p>
+
+      <!-- Pied du panneau : coordonnées GPS -->
+      <div class="mt-6 pt-5 text-[0.7rem] font-mono text-pierre-300 flex items-center justify-between border-t border-pierre-700">
+        <span>
+          <span class="opacity-60">{lp.coords} :</span>
+          <span id="commune-coords" class="ml-2">39.44° N · 9.57° E</span>
+        </span>
+        <span class="text-sardaigne-rouge text-xs">✦</span>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
 
-<script define:vars={{ communes }}>
-  // Sélection des éléments cliquables (groupes <g> avec class commune-point)
+<script define:vars={{ communes, lang, lp }}>
   const points = document.querySelectorAll('.commune-point');
-  const nameEl = document.getElementById('commune-name');
-  const provEl = document.getElementById('commune-province');
-  const notesEl = document.getElementById('commune-notes');
-  const coordsEl = document.getElementById('commune-coords');
-  const priorityEl = document.getElementById('commune-priority');
+  const els = {
+    name: document.getElementById('commune-name'),
+    region: document.getElementById('commune-region'),
+    province: document.getElementById('commune-province'),
+    attestation: document.getElementById('commune-attestation'),
+    population: document.getElementById('commune-population'),
+    altitude: document.getElementById('commune-altitude'),
+    notes: document.getElementById('commune-notes'),
+    coords: document.getElementById('commune-coords'),
+    priority: document.getElementById('commune-priority'),
+  };
 
   function selectCommune(i) {
     const c = communes[i];
     if (!c) return;
-    if (nameEl) nameEl.textContent = c.nom;
-    if (provEl) provEl.textContent = c.province || '';
-    if (notesEl) notesEl.textContent = c.notes || '';
-    if (coordsEl) coordsEl.textContent = `${c.lat.toFixed(2)}° N · ${c.lng.toFixed(2)}° E`;
-    if (priorityEl) priorityEl.style.visibility = c.priorite ? 'visible' : 'hidden';
+    if (els.name) els.name.textContent = c.nom;
+    if (els.region) els.region.textContent = c.region || '';
+    if (els.province) els.province.textContent = c.province || '—';
+    if (els.attestation) els.attestation.textContent = c.attestation || '—';
+    if (els.population) els.population.textContent = c.population
+      ? `${c.population.toLocaleString('fr-FR')} ${lp.inhabitants}` : '—';
+    if (els.altitude) els.altitude.textContent = c.altitude
+      ? `${c.altitude} ${lp.meters}` : '—';
 
-    // Highlight visuel : grossir le point sélectionné
+    // Notes localisées
+    let noteText = c.notes;
+    if (lang === 'it' && c.notesIt) noteText = c.notesIt;
+    if (lang === 'en' && c.notesEn) noteText = c.notesEn;
+    if (els.notes) els.notes.textContent = noteText || '';
+
+    if (els.coords) els.coords.textContent = `${c.lat.toFixed(2)}° N · ${c.lng.toFixed(2)}° E`;
+    if (els.priority) els.priority.style.visibility = c.priorite ? 'visible' : 'hidden';
+
     document.querySelectorAll('.commune-dot').forEach(dot => {
-      dot.setAttribute('r', dot.getAttribute('data-base-r') || '10');
+      const baseR = dot.getAttribute('data-base-r');
+      if (baseR) dot.setAttribute('r', baseR);
     });
     const selectedDot = points[i].querySelector('.commune-dot');
     if (selectedDot) {
@@ -237,6 +319,9 @@ const points = communes.map(c => {
     point.addEventListener('click', () => selectCommune(i));
     point.addEventListener('touchend', (e) => { e.preventDefault(); selectCommune(i); });
   });
+
+  // Sélection initiale : Villaputzu (commune prioritaire)
+  if (points.length > 0) selectCommune(0);
 </script>
 
 <style>
