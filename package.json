@@ -1,0 +1,18 @@
+{
+  "name": "porcu-sardaigne",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Site culturel sur le nom de famille Porcu, ses racines sardes, la diaspora, le banditisme et la généalogie.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^4.16.0",
+    "tailwindcss": "^3.4.14"
+  }
+}

@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Porcu · Archivio culturel du patronyme sarde" section="accueil">
+
+  <!-- HERO ÉDITORIAL -->
+  <section class="relative overflow-hidden min-h-[92vh] flex items-center border-b border-sardaigne-encre/15">
+
+    <!-- Couche atmosphère : drapeau Quattro Mori décomposé -->
+    <div class="absolute inset-0 opacity-[0.035] pointer-events-none">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+        <line x1="400" y1="0" x2="400" y2="600" stroke="#9a1b1f" stroke-width="40"/>
+        <line x1="0" y1="300" x2="800" y2="300" stroke="#9a1b1f" stroke-width="40"/>
+      </svg>
+    </div>
+
+    <!-- Lignes topographiques en arrière-plan -->
+    <div class="absolute inset-0 topo-lines opacity-60 pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-20 w-full grid lg:grid-cols-12 gap-10 items-center">
+
+      <div class="lg:col-span-7">
+        <div class="fade-up stagger-1 flex items-center gap-4 mb-8">
+          <span class="h-[1px] w-16 bg-sardaigne-rouge"></span>
+          <span class="eyebrow">Sardegna · 1850 — 2026</span>
+        </div>
+
+        <h1 class="fade-up stagger-2 font-display text-6xl md:text-[5.5rem] lg:text-[7rem] leading-[0.9] text-sardaigne-encre">
+          <span class="block italic text-sardaigne-sepia">Un nom,</span>
+          <span class="block">une île,</span>
+          <span class="block text-sardaigne-rouge">une mémoire.</span>
+        </h1>
+
+        <div class="fade-up stagger-3 max-w-xl mt-10">
+          <p class="font-serif text-lg md:text-xl leading-relaxed text-sardaigne-encre/90 drop-cap">
+            Porcu. Du sarde <em>porcu</em>, désignation ancienne issue de la vie pastorale — un patronyme
+            inscrit depuis des siècles dans la pierre des villages de la Barbagia, de l'Ogliastra et du
+            Campidano. Ce site réunit ce que l'histoire, la langue et la diaspora ont dispersé.
+          </p>
+        </div>
+
+        <div class="fade-up stagger-4 mt-10 flex flex-wrap gap-4">
+          <a href="/le-nom-porcu/" class="group inline-flex items-center gap-3 bg-sardaigne-encre text-sardaigne-parchemin px-7 py-4 font-sans text-sm tracking-widest uppercase hover:bg-sardaigne-rouge transition-colors">
+            Explorer le nom
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a href="/genealogie/" class="group inline-flex items-center gap-3 border border-sardaigne-encre/40 text-sardaigne-encre px-7 py-4 font-sans text-sm tracking-widest uppercase hover:bg-sardaigne-encre hover:text-sardaigne-parchemin transition-colors">
+            Contribuer
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Colonne de droite : plaque gravée -->
+      <div class="fade-up stagger-5 lg:col-span-5 relative">
+        <div class="relative bg-sardaigne-encre text-sardaigne-parchemin p-10 md:p-12 aspect-[4/5] flex flex-col justify-between">
+
+          <!-- Coins décoratifs -->
+          <div class="absolute top-4 left-4 w-8 h-8 border-l border-t border-sardaigne-parchemin/30"></div>
+          <div class="absolute top-4 right-4 w-8 h-8 border-r border-t border-sardaigne-parchemin/30"></div>
+          <div class="absolute bottom-4 left-4 w-8 h-8 border-l border-b border-sardaigne-parchemin/30"></div>
+          <div class="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-sardaigne-parchemin/30"></div>
+
+          <div>
+            <div class="eyebrow text-sardaigne-parchemin/70">Étymologie</div>
+            <div class="font-display text-7xl md:text-8xl mt-4 text-sardaigne-rouge">P</div>
+          </div>
+
+          <div>
+            <div class="font-display text-4xl md:text-5xl leading-tight italic">
+              porcu
+            </div>
+            <div class="mt-4 font-serif text-base text-pierre-100">
+              <span class="font-sans text-[0.7rem] tracking-widest uppercase text-pierre-300">n. m. — sarde </span>
+              <br/>
+              Nom issu du lexique animalier,
+              typique des patronymes sardes anciens
+              formés avant le XVIIIᵉ siècle.
+            </div>
+          </div>
+
+          <div class="rule opacity-40"></div>
+
+          <div class="flex justify-between items-end font-mono text-[0.7rem] text-pierre-300 tracking-widest">
+            <span>VILLAPUTZU</span>
+            <span>GHILARZA</span>
+            <span>LULA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ORNEMENT -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="ornament">✦ ✦ ✦</div>
+  </section>
+
+  <!-- MANIFESTO / POSITIONNEMENT -->
+  <section class="max-w-4xl mx-auto px-6 py-20">
+    <div class="eyebrow text-center">Un projet culturel</div>
+    <h2 class="font-display text-4xl md:text-6xl text-center mt-4 leading-tight">
+      <em class="text-sardaigne-rouge">« </em>Un site culturel sur le patronyme Porcu,
+      son île d'origine, et ses chemins d'exil<em class="text-sardaigne-rouge"> »</em>
+    </h2>
+    <div class="rule mt-10"></div>
+    <p class="font-serif text-lg md:text-xl leading-relaxed mt-10 text-sardaigne-encre/90">
+      Ce site explore l'histoire culturelle du nom Porcu et le contexte du banditisme sarde —
+      phénomène historique réel de la Sardaigne intérieure — <strong>sans présumer de lien criminel
+      pour l'ensemble des porteurs du nom.</strong>
+    </p>
+    <p class="font-serif text-lg md:text-xl leading-relaxed mt-6 text-sardaigne-encre/90">
+      Il mêle trois fils : l'<em>étymologie sarde</em>, le <em>contexte historique insulaire</em>,
+      et la <em>généalogie familiale</em>, avec une même exigence : aucune filiation sans acte probant,
+      aucune association sans source vérifiable.
+    </p>
+  </section>
+
+  <!-- SOMMAIRE DES 6 RUBRIQUES -->
+  <section class="bg-sardaigne-encre text-sardaigne-parchemin py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-10 mb-16">
+        <div class="lg:col-span-4">
+          <div class="eyebrow text-sardaigne-parchemin/70">Index</div>
+          <h2 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-parchemin leading-[0.95]">
+            Six<br/>
+            <em class="text-sardaigne-rouge">chapitres</em>
+          </h2>
+        </div>
+        <div class="lg:col-span-8 flex items-end">
+          <p class="font-serif text-lg md:text-xl text-pierre-100 leading-relaxed">
+            De l'étymologie du nom à la frise des enlèvements de 1960-1997,
+            en passant par la cartographie des communes et l'arbre généalogique en construction —
+            chaque rubrique est un fragment du récit.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-pierre-800">
+        {[
+          { num: 'II', titre: 'Le nom Porcu', desc: 'Étymologie sarde, attestations, cartographie des communes.', path: '/le-nom-porcu/' },
+          { num: 'III', titre: 'Sardaigne, identité', desc: 'Culture, langue, drapeau Quattro Mori, histoire insulaire.', path: '/sardaigne/' },
+          { num: 'IV', titre: 'Banditisme sarde', desc: 'Phénomène rural, codes d\'honneur, Barbagia et Orgosolo.', path: '/banditisme-sarde/' },
+          { num: 'V', titre: 'Anonima Sarda', desc: 'Enlèvements 1960-1997, contexte, bilan historiographique.', path: '/anonima-sarda/' },
+          { num: 'VI', titre: 'Généalogie', desc: 'Arbre, archives, appels à contribution des porteurs du nom.', path: '/genealogie/' },
+          { num: '✦', titre: 'Méthode & sources', desc: 'Geneanet, FamilySearch, Antenati — toutes les voies documentaires.', path: '/genealogie/#methode' },
+        ].map(item => (
+          <a href={item.path} class="group bg-sardaigne-encre hover:bg-pierre-900 p-8 transition-colors relative overflow-hidden">
+            <div class="font-display text-6xl italic text-sardaigne-rouge/80 mb-4 group-hover:text-sardaigne-rouge transition-colors">
+              {item.num}
+            </div>
+            <h3 class="font-display text-2xl text-sardaigne-parchemin mb-3">{item.titre}</h3>
+            <p class="font-serif text-sm text-pierre-200 leading-relaxed">{item.desc}</p>
+            <div class="mt-6 font-sans text-[0.7rem] tracking-widest uppercase text-sardaigne-parchemin/60 group-hover:text-sardaigne-rouge transition-colors">
+              Lire →
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIASPORA LORRAINE — narrative -->
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+      <div class="lg:col-span-5 lg:sticky lg:top-28">
+        <div class="eyebrow">Diaspora</div>
+        <h2 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-encre leading-[0.95]">
+          De la <em class="text-sardaigne-rouge">Barbagia</em><br/>
+          aux mines<br/>
+          <em>de Lorraine</em>
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7 font-serif text-lg leading-relaxed text-sardaigne-encre/90 space-y-6">
+        <p>
+          Dans les années 1950, comme tant d'autres familles de l'Italie du Sud, des Porcu quittent
+          la Sardaigne pour la France. Leur destination : <strong>Bousbach, Forbach</strong>, et plus
+          largement le bassin houiller lorrain, où la main-d'œuvre étrangère est alors massivement
+          recrutée dans les mines.
+        </p>
+        <p>
+          Cette communauté a maintenu vivaces, sur plusieurs générations, les liens avec l'île
+          d'origine — liens parfois ranimés par des rassemblements familiaux, comme celui, documenté,
+          de <strong>2018</strong>.
+        </p>
+        <p>
+          Comprendre le patronyme Porcu, c'est donc tenir les deux bouts d'un même fil :
+          le village pastoral de la Barbagia et la cité minière lorraine.
+        </p>
+
+        <div class="grid grid-cols-2 gap-8 pt-10 mt-10 border-t border-sardaigne-encre/15">
+          <div>
+            <div class="font-display text-5xl text-sardaigne-rouge">1950s</div>
+            <div class="font-sans text-xs tracking-widest uppercase text-sardaigne-sepia mt-2">Vague migratoire</div>
+          </div>
+          <div>
+            <div class="font-display text-5xl text-sardaigne-rouge">2018</div>
+            <div class="font-sans text-xs tracking-widest uppercase text-sardaigne-sepia mt-2">Réunion familiale attestée</div>
+          </div>
+        </div>
+
+        <a href="/le-nom-porcu/#diaspora" class="inline-flex items-center gap-3 mt-10 font-sans text-sm tracking-widest uppercase text-sardaigne-encre hover:text-sardaigne-rouge transition-colors border-b border-sardaigne-encre hover:border-sardaigne-rouge pb-1">
+          Lire la section diaspora
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITATION DE CLÔTURE -->
+  <section class="max-w-4xl mx-auto px-6 py-24 text-center">
+    <div class="ornament">✦</div>
+    <blockquote class="font-display italic text-3xl md:text-5xl leading-tight text-sardaigne-encre mt-10">
+      « Sa limba est sa nobiltade de su coro. »
+    </blockquote>
+    <p class="font-sans text-xs tracking-widest uppercase text-sardaigne-sepia mt-8">
+      La langue est la noblesse du cœur — proverbe sarde
+    </p>
+  </section>
+
+</Layout>

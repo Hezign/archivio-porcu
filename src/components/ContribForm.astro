@@ -1,0 +1,126 @@
+---
+// Formulaire simple (côté client) — à brancher sur Formspree, Resend ou API n8n
+---
+
+<div class="bg-sardaigne-encre text-sardaigne-parchemin p-8 md:p-12 relative overflow-hidden">
+
+  <!-- Ornement décoratif -->
+  <div class="absolute top-0 right-0 w-64 h-64 opacity-10">
+    <svg viewBox="0 0 100 100" class="w-full h-full">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#9a1b1f" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="30" fill="none" stroke="#9a1b1f" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="20" fill="none" stroke="#9a1b1f" stroke-width="0.5"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#9a1b1f" stroke-width="0.3"/>
+      <line x1="0" y1="50" x2="100" y2="50" stroke="#9a1b1f" stroke-width="0.3"/>
+    </svg>
+  </div>
+
+  <div class="relative max-w-2xl">
+    <div class="eyebrow text-sardaigne-parchemin/70">Appel à contribution</div>
+    <h3 class="font-display text-3xl md:text-4xl text-sardaigne-parchemin mt-3 leading-tight">
+      Vous portez le nom, avez un ancêtre Porcu, ou détenez des documents de famille ?
+    </h3>
+    <p class="font-serif text-pierre-100 mt-5 leading-relaxed">
+      Ce projet est collectif par nature. Les livrets de famille, photographies anciennes,
+      correspondances, actes d'émigration ou simples souvenirs sont précieux pour reconstituer
+      les branches de la diaspora sarde.
+    </p>
+
+    <form id="contrib-form" class="mt-10 space-y-6" action="#" method="POST">
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label class="block eyebrow text-pierre-300 mb-2">Prénom</label>
+          <input
+            type="text"
+            name="prenom"
+            required
+            class="w-full bg-transparent border-b border-pierre-400/50 focus:border-sardaigne-rouge outline-none py-2 text-sardaigne-parchemin font-serif text-lg transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block eyebrow text-pierre-300 mb-2">Nom</label>
+          <input
+            type="text"
+            name="nom"
+            required
+            class="w-full bg-transparent border-b border-pierre-400/50 focus:border-sardaigne-rouge outline-none py-2 text-sardaigne-parchemin font-serif text-lg transition-colors"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label class="block eyebrow text-pierre-300 mb-2">Courriel</label>
+        <input
+          type="email"
+          name="email"
+          required
+          class="w-full bg-transparent border-b border-pierre-400/50 focus:border-sardaigne-rouge outline-none py-2 text-sardaigne-parchemin font-serif text-lg transition-colors"
+        />
+      </div>
+
+      <div>
+        <label class="block eyebrow text-pierre-300 mb-2">Lien avec le nom Porcu</label>
+        <select
+          name="lien"
+          class="w-full bg-sardaigne-encre border-b border-pierre-400/50 focus:border-sardaigne-rouge outline-none py-2 text-sardaigne-parchemin font-serif text-lg"
+        >
+          <option>Je porte le nom Porcu</option>
+          <option>Ancêtre / parent direct nommé Porcu</option>
+          <option>Alliance familiale (mariage)</option>
+          <option>Chercheur / généalogiste</option>
+          <option>Simple intérêt pour la Sardaigne</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block eyebrow text-pierre-300 mb-2">Votre message</label>
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Commune sarde d'origine, ancêtres connus, documents disponibles…"
+          class="w-full bg-transparent border border-pierre-400/30 focus:border-sardaigne-rouge outline-none p-3 text-sardaigne-parchemin font-serif transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <div class="bg-sardaigne-encre/50 border border-pierre-400/20 p-5 mt-8">
+        <div class="eyebrow text-pierre-300 mb-3">Informations RGPD</div>
+        <ul class="space-y-2 font-sans text-xs text-pierre-200 leading-relaxed">
+          <li class="flex gap-2"><span class="text-sardaigne-rouge">✦</span><span><strong class="text-sardaigne-parchemin">Finalité :</strong> répondre à votre message et échanger dans le cadre de la recherche généalogique Porcu.</span></li>
+          <li class="flex gap-2"><span class="text-sardaigne-rouge">✦</span><span><strong class="text-sardaigne-parchemin">Durée de conservation :</strong> 3 ans maximum à compter du dernier échange.</span></li>
+          <li class="flex gap-2"><span class="text-sardaigne-rouge">✦</span><span><strong class="text-sardaigne-parchemin">Vos droits :</strong> accès, rectification, effacement, opposition — exerçables à tout moment.</span></li>
+          <li class="flex gap-2"><span class="text-sardaigne-rouge">✦</span><span><strong class="text-sardaigne-parchemin">Aucune publication nominative</strong> sans votre accord écrit explicite et préalable.</span></li>
+        </ul>
+      </div>
+
+      <label class="flex items-start gap-3 text-xs font-sans text-pierre-200">
+        <input type="checkbox" required class="mt-1 accent-sardaigne-rouge" />
+        <span>
+          J'accepte que mes données soient traitées dans le cadre strict de la recherche
+          généalogique Porcu, conformément à la
+          <a href="/mentions-legales/confidentialite/" class="underline text-sardaigne-rouge hover:text-sardaigne-parchemin">politique de confidentialité</a>.
+          Je comprends que je peux retirer mon consentement à tout moment via la
+          <a href="/mentions-legales/retrait/" class="underline text-sardaigne-rouge hover:text-sardaigne-parchemin">page de retrait</a>.
+        </span>
+      </label>
+
+      <button
+        type="submit"
+        class="group inline-flex items-center gap-3 bg-sardaigne-rouge hover:bg-sardaigne-rouge-sombre text-sardaigne-parchemin px-8 py-4 font-sans text-sm tracking-widest uppercase transition-colors"
+      >
+        <span>Envoyer ma contribution</span>
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  // Handler basique — à brancher ensuite sur endpoint (Formspree / Resend / n8n)
+  const form = document.getElementById('contrib-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Merci ! Ce formulaire est en cours de finalisation. Votre contribution sera transmise dès la mise en ligne définitive.");
+  });
+</script>

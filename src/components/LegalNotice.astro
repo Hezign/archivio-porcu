@@ -1,0 +1,53 @@
+---
+// Bandeau positionnement éditorial — à utiliser sur les pages sensibles
+// (Banditisme, Anonima Sarda, Généalogie)
+export interface Props {
+  variant?: 'default' | 'strong' | 'genealogie';
+}
+const { variant = 'default' } = Astro.props;
+---
+
+{variant === 'strong' && (
+  <div class="bg-sardaigne-rouge/5 border-l-4 border-sardaigne-rouge p-6 md:p-8">
+    <div class="eyebrow">Avertissement éditorial</div>
+    <p class="font-serif text-[1.05rem] mt-3 leading-relaxed text-sardaigne-encre">
+      Ce chapitre documente un phénomène historique de la Sardaigne intérieure.
+      Il ne vise <strong>ni à romantiser</strong> le banditisme, <strong>ni à l'associer
+      à une population dans son ensemble</strong>. Aucune affirmation concernant des personnes
+      vivantes ou des liens entre le patronyme Porcu et des activités criminelles n'est publiée
+      sans base documentaire sérieuse. Les porteurs actuels du nom ne sont, en l'état des
+      recherches, pas liés aux groupes évoqués.
+    </p>
+    <p class="font-sans text-xs mt-4 text-sardaigne-encre/70" style="letter-spacing:0.05em;">
+      Toute personne concernée peut exercer son
+      <a href="/mentions-legales/retrait/" class="underline text-sardaigne-rouge hover:text-sardaigne-rouge-sombre">droit de rectification ou de retrait</a>.
+    </p>
+  </div>
+)}
+
+{variant === 'genealogie' && (
+  <div class="bg-sardaigne-encre text-sardaigne-parchemin p-6 md:p-8 border-l-4 border-sardaigne-rouge">
+    <div class="eyebrow text-sardaigne-parchemin/70">Politique de confidentialité de l'arbre</div>
+    <p class="font-serif text-[1.02rem] mt-3 leading-relaxed text-pierre-100">
+      Les <strong>personnes vivantes</strong> ne sont jamais publiées publiquement sans leur
+      consentement écrit explicite. Seules les <strong>personnes décédées</strong> peuvent
+      apparaître dans l'arbre, conformément au RGPD et aux délais légaux d'accès à l'état
+      civil (75 ans pour naissances et mariages, 25 ans pour décès en France).
+    </p>
+    <a href="/mentions-legales/retrait/" class="inline-flex items-center gap-2 mt-4 font-sans text-xs text-sardaigne-rouge hover:text-sardaigne-parchemin transition-colors" style="letter-spacing:0.2em;text-transform:uppercase;">
+      Demander une rectification ou un retrait →
+    </a>
+  </div>
+)}
+
+{variant === 'default' && (
+  <div class="border border-sardaigne-encre/20 bg-sardaigne-parchemin p-6">
+    <p class="font-serif text-sm leading-relaxed text-sardaigne-encre/85">
+      <strong>Vocation culturelle, historique et généalogique.</strong>
+      Les informations publiées sont issues de recherches documentaires et familiales.
+      Aucune affirmation concernant des personnes vivantes ou des liens avec des activités
+      criminelles n'est publiée sans base documentaire sérieuse.
+      <a href="/mentions-legales/retrait/" class="underline text-sardaigne-rouge">Toute personne concernée peut demander une rectification ou un retrait.</a>
+    </p>
+  </div>
+)}

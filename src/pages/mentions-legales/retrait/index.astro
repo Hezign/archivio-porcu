@@ -1,0 +1,113 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Demande de retrait ou de rectification · Archivio Porcu">
+
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="eyebrow">Droits RGPD · Articles 16 & 17</div>
+    <h1 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-encre leading-[0.95]">
+      Retrait ou <em class="text-sardaigne-rouge">rectification</em>
+    </h1>
+    <p class="font-serif text-lg mt-6 text-sardaigne-encre/80 italic">
+      Si une information publiée vous concerne ou concerne un proche, vous pouvez demander sa correction ou sa suppression.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-16">
+
+    <div class="bg-sardaigne-encre text-sardaigne-parchemin p-8 md:p-10 mb-12">
+      <div class="eyebrow text-sardaigne-parchemin/70">Engagement</div>
+      <p class="font-serif text-lg leading-relaxed mt-3 text-pierre-100">
+        Toute demande de rectification ou de retrait est examinée et traitée dans un
+        <strong class="text-sardaigne-parchemin">délai maximal de 30 jours</strong>, conformément
+        au RGPD. En cas de preuve manifeste (document d'identité, acte de famille), la
+        suppression est immédiate.
+      </p>
+    </div>
+
+    <h2 class="font-display text-3xl text-sardaigne-encre mb-6">Formulaire de demande</h2>
+
+    <form id="retrait-form" class="space-y-6">
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label class="block eyebrow mb-2">Prénom *</label>
+          <input type="text" name="prenom" required class="w-full bg-transparent border-b border-sardaigne-encre/40 focus:border-sardaigne-rouge outline-none py-2 font-serif text-lg transition-colors" />
+        </div>
+        <div>
+          <label class="block eyebrow mb-2">Nom *</label>
+          <input type="text" name="nom" required class="w-full bg-transparent border-b border-sardaigne-encre/40 focus:border-sardaigne-rouge outline-none py-2 font-serif text-lg transition-colors" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block eyebrow mb-2">Email de contact *</label>
+        <input type="email" name="email" required class="w-full bg-transparent border-b border-sardaigne-encre/40 focus:border-sardaigne-rouge outline-none py-2 font-serif text-lg transition-colors" />
+      </div>
+
+      <div>
+        <label class="block eyebrow mb-2">Nature de la demande *</label>
+        <div class="space-y-3 mt-3">
+          {[
+            { v: 'retrait', label: "Retrait complet d'une information me concernant ou concernant un proche" },
+            { v: 'rectification', label: "Rectification d'une information inexacte" },
+            { v: 'acces', label: "Demande d'accès aux données me concernant" },
+            { v: 'opposition', label: "Opposition au traitement" },
+            { v: 'autre', label: "Autre (précisez dans le message)" },
+          ].map(opt => (
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="radio" name="nature" value={opt.v} required class="mt-1 accent-sardaigne-rouge" />
+              <span class="font-serif text-[1.02rem]">{opt.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block eyebrow mb-2">URL ou section concernée</label>
+        <input type="text" name="url" placeholder="ex. /genealogie/ section arbre, paragraphe..." class="w-full bg-transparent border-b border-sardaigne-encre/40 focus:border-sardaigne-rouge outline-none py-2 font-serif text-lg transition-colors" />
+      </div>
+
+      <div>
+        <label class="block eyebrow mb-2">Détail de la demande *</label>
+        <textarea name="message" rows="6" required placeholder="Décrivez précisément l'information concernée et, si possible, fournissez tout élément justifiant votre demande (lien de parenté, acte d'état civil...)." class="w-full bg-transparent border border-sardaigne-encre/30 focus:border-sardaigne-rouge outline-none p-3 font-serif transition-colors resize-none"></textarea>
+      </div>
+
+      <div class="bg-sardaigne-parchemin border border-sardaigne-encre/20 p-5">
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" required class="mt-1 accent-sardaigne-rouge" />
+          <span class="font-serif text-sm leading-relaxed">
+            Je certifie que les informations fournies sont exactes. Je comprends que
+            l'éditeur peut demander une pièce justificative pour traiter ma demande
+            (acte d'état civil, lien de parenté attesté, pièce d'identité).
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" class="group inline-flex items-center gap-3 bg-sardaigne-rouge hover:bg-sardaigne-rouge-sombre text-sardaigne-parchemin px-8 py-4 font-sans text-sm uppercase transition-colors" style="letter-spacing:0.2em;">
+        Envoyer la demande <span class="transition-transform group-hover:translate-x-1">→</span>
+      </button>
+    </form>
+
+    <div class="mt-16 pt-10 border-t border-sardaigne-encre/15">
+      <div class="eyebrow mb-3">Autre méthode</div>
+      <h3 class="font-display text-2xl text-sardaigne-encre mb-3">Par courrier électronique direct</h3>
+      <p class="font-serif">
+        Vous pouvez aussi envoyer votre demande à
+        <a href="#" class="font-mono text-sardaigne-rouge underline">[email à compléter]</a>
+        avec pour objet « RGPD — Demande de retrait ».
+      </p>
+    </div>
+
+  </section>
+
+  <script>
+    const form = document.getElementById('retrait-form');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Votre demande a bien été enregistrée. Vous recevrez une réponse sous 30 jours maximum, conformément au RGPD.\n\n(Ce formulaire est en cours de finalisation technique — son envoi réel sera opérationnel dès la mise en ligne.)");
+    });
+  </script>
+
+</Layout>

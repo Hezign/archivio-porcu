@@ -1,0 +1,274 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Sardaigne · Identité, culture et drapeau" section="sardaigne">
+
+  <!-- Hero chapitre -->
+  <section class="max-w-7xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-2 font-display italic text-7xl text-sardaigne-rouge">III</div>
+      <div class="lg:col-span-10">
+        <div class="eyebrow">Chapitre troisième</div>
+        <h1 class="font-display text-5xl md:text-7xl mt-3 leading-[0.95] text-sardaigne-encre">
+          <em class="text-sardaigne-rouge">Sardegna</em><br/>
+          identità
+        </h1>
+        <p class="font-serif text-xl mt-6 text-sardaigne-encre/80 italic max-w-3xl">
+          Culture, langue et symboles d'une île méditerranéenne à l'identité singulière.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="max-w-4xl mx-auto px-6 py-20">
+    <p class="font-serif text-xl md:text-2xl leading-relaxed text-sardaigne-encre/90 drop-cap">
+      La Sardaigne n'est pas, au sens ordinaire, une « région » d'Italie. Elle est une île-continent,
+      avec sa langue propre — le <em>sardo</em>, reconnu comme langue à part entière —, ses
+      archaïsmes culturels, ses traditions pastorales millénaires et une histoire marquée par les
+      influences phénicienne, punique, romaine, byzantine, pisane, aragonaise, espagnole, piémontaise,
+      puis italienne.
+    </p>
+  </section>
+
+  <!-- DRAPEAU QUATTRO MORI — Introduction -->
+  <section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+        <div class="eyebrow">Quattro Mori</div>
+        <h2 class="font-display text-4xl md:text-6xl mt-4 text-sardaigne-encre leading-[0.95]">
+          Quatre Maures<br/>
+          sur <em class="text-sardaigne-rouge">croix de<br/>Saint-Georges</em>
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7 font-serif space-y-5 text-sardaigne-encre/90 text-lg leading-relaxed">
+        <p>
+          Le drapeau sarde — d'origine médiévale, probablement importé par la couronne d'Aragon au
+          XIVᵉ siècle — montre quatre têtes de Maures arrangées autour d'une croix rouge sur champ
+          blanc. Selon la tradition dominante, il commémorerait les victoires chrétiennes sur les
+          Sarrasins lors de la Reconquista ibérique, mais son interprétation exacte reste débattue.
+        </p>
+        <p>
+          Ce drapeau a connu <strong>deux grandes versions historiques</strong> qui se distinguent
+          par un détail en apparence minuscule — la position du bandeau des Maures — mais dont la
+          portée symbolique est considérable. Ce n'est pas qu'un choix graphique : c'est une
+          affirmation politique.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARAISON DES DEUX VERSIONS -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-[1px] bg-sardaigne-encre">
+
+      <!-- VERSION ANCIENNE — yeux bandés -->
+      <div class="bg-sardaigne-parchemin p-8 md:p-10">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="eyebrow text-sardaigne-sepia">Version ancienne</div>
+            <div class="font-display text-2xl md:text-3xl mt-1 text-sardaigne-encre">Bandeau sur les yeux</div>
+          </div>
+          <div class="font-mono text-[0.7rem] tracking-widest text-sardaigne-sepia text-right">
+            XIXᵉ s. —<br/>1999
+          </div>
+        </div>
+
+        <!-- Drapeau SVG — yeux bandés -->
+        <div class="relative bg-white shadow-[0_20px_60px_-20px_rgba(26,21,13,0.25)] aspect-[3/2] p-8">
+          <svg viewBox="0 0 300 200" class="w-full h-full">
+            <rect x="0" y="0" width="300" height="200" fill="#f8f4e8"/>
+            <rect x="130" y="0" width="40" height="200" fill="#9a1b1f"/>
+            <rect x="0" y="80" width="300" height="40" fill="#9a1b1f"/>
+            {[
+              { cx: 65, cy: 40 },
+              { cx: 235, cy: 40 },
+              { cx: 65, cy: 160 },
+              { cx: 235, cy: 160 },
+            ].map(head => (
+              <g>
+                <!-- Tête -->
+                <circle cx={head.cx} cy={head.cy + 2} r="18" fill="#1a150d"/>
+                <!-- BANDEAU SUR LES YEUX — barre horizontale au niveau du regard -->
+                <rect x={head.cx - 20} y={head.cy - 4} width="40" height="7" fill="#f8f4e8"/>
+                <!-- Profil nez -->
+                <path d={`M ${head.cx - 2} ${head.cy + 4} Q ${head.cx + 3} ${head.cy + 8} ${head.cx - 2} ${head.cy + 12}`} fill="none" stroke="#f8f4e8" stroke-width="0.8" opacity="0.4"/>
+              </g>
+            ))}
+          </svg>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-sardaigne-encre/15">
+          <div class="flex items-start gap-3">
+            <span class="text-sardaigne-sepia font-display text-2xl leading-none">⟁</span>
+            <div>
+              <div class="font-sans text-xs tracking-widest uppercase text-sardaigne-sepia mb-2">Lecture symbolique</div>
+              <p class="font-serif text-[1.02rem] leading-relaxed text-sardaigne-encre/85">
+                <strong>Domination, asservissement.</strong> Cette représentation, diffusée à partir
+                du XIXᵉ siècle pour des raisons qui restent mal expliquées, évoque la figure du
+                vaincu aux yeux voilés.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSION OFFICIELLE — bandeau relevé -->
+      <div class="bg-sardaigne-encre text-sardaigne-parchemin p-8 md:p-10">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="eyebrow text-sardaigne-parchemin/70">Version officielle</div>
+            <div class="font-display text-2xl md:text-3xl mt-1 text-sardaigne-parchemin">Bandeau relevé</div>
+          </div>
+          <div class="font-mono text-[0.7rem] tracking-widest text-sardaigne-rouge text-right">
+            Depuis<br/><strong class="text-base">1999</strong>
+          </div>
+        </div>
+
+        <!-- Drapeau SVG — bandeau sur le front -->
+        <div class="relative bg-white shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] aspect-[3/2] p-8">
+          <svg viewBox="0 0 300 200" class="w-full h-full">
+            <rect x="0" y="0" width="300" height="200" fill="#f8f4e8"/>
+            <rect x="130" y="0" width="40" height="200" fill="#9a1b1f"/>
+            <rect x="0" y="80" width="300" height="40" fill="#9a1b1f"/>
+            {[
+              { cx: 65, cy: 40 },
+              { cx: 235, cy: 40 },
+              { cx: 65, cy: 160 },
+              { cx: 235, cy: 160 },
+            ].map(head => (
+              <g>
+                <!-- Tête -->
+                <circle cx={head.cx} cy={head.cy + 2} r="18" fill="#1a150d"/>
+                <!-- BANDEAU RELEVÉ SUR LE FRONT (au-dessus des yeux) -->
+                <rect x={head.cx - 18} y={head.cy - 13} width="36" height="6" fill="#f8f4e8"/>
+                <!-- Yeux visibles -->
+                <circle cx={head.cx - 6} cy={head.cy - 1} r="1.5" fill="#f8f4e8"/>
+                <circle cx={head.cx + 6} cy={head.cy - 1} r="1.5" fill="#f8f4e8"/>
+                <!-- Profil nez -->
+                <path d={`M ${head.cx - 2} ${head.cy + 4} Q ${head.cx + 3} ${head.cy + 8} ${head.cx - 2} ${head.cy + 12}`} fill="none" stroke="#f8f4e8" stroke-width="0.8" opacity="0.4"/>
+              </g>
+            ))}
+          </svg>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-pierre-700">
+          <div class="flex items-start gap-3">
+            <span class="text-sardaigne-rouge font-display text-2xl leading-none">✦</span>
+            <div>
+              <div class="font-sans text-xs tracking-widest uppercase text-sardaigne-rouge mb-2">Lecture symbolique</div>
+              <p class="font-serif text-[1.02rem] leading-relaxed text-pierre-100">
+                <strong class="text-sardaigne-parchemin">Liberté, dignité, identité retrouvée.</strong>
+                Adoptée par la Région autonome en 1999 avec les yeux visibles et l'orientation des
+                têtes modifiée — un regard tourné vers l'avenir.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNTHÈSE — passage symbolique -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="border-l-4 border-sardaigne-rouge pl-8 py-4">
+      <div class="eyebrow">Du vaincu au libre</div>
+      <p class="font-display text-2xl md:text-3xl italic text-sardaigne-encre leading-snug mt-4">
+        Le passage du bandeau sur les yeux au bandeau sur le front est souvent lu comme le passage
+        d'un <span class="text-sardaigne-rouge not-italic">symbole de soumission</span>
+        à un <span class="text-sardaigne-rouge not-italic">symbole de liberté</span> et d'identité
+        sarde affirmée.
+      </p>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-sardaigne-encre/15">
+      <div class="bg-sardaigne-parchemin p-8 text-center">
+        <div class="font-display text-4xl md:text-5xl text-sardaigne-rouge">XIVᵉ</div>
+        <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mt-3">Première attestation</div>
+      </div>
+      <div class="bg-sardaigne-parchemin p-8 text-center">
+        <div class="font-display text-4xl md:text-5xl text-sardaigne-rouge">XIXᵉ</div>
+        <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mt-3">Diffusion « yeux bandés »</div>
+      </div>
+      <div class="bg-sardaigne-parchemin p-8 text-center">
+        <div class="font-display text-4xl md:text-5xl text-sardaigne-rouge">1999</div>
+        <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mt-3">Réforme officielle</div>
+      </div>
+      <div class="bg-sardaigne-parchemin p-8 text-center">
+        <div class="font-display text-4xl md:text-5xl text-sardaigne-rouge">4</div>
+        <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mt-3">Maures</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUES ET CULTURE -->
+  <section class="bg-sardaigne-encre text-sardaigne-parchemin py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-16">
+        <div class="eyebrow text-sardaigne-parchemin/70">Langue & culture</div>
+        <h2 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-parchemin leading-[0.95]">
+          Une île, <em class="text-sardaigne-rouge">plusieurs langues</em>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-pierre-800">
+        {[
+          { nom: 'Sardo campidanais', zone: 'Sud et centre-sud', note: "Parlé dans le Campidano, Cagliari, Sarrabus." },
+          { nom: 'Sardo logudorien', zone: 'Centre et nord', note: "Variante considérée comme plus conservatrice, au cœur de la Barbagia." },
+          { nom: 'Gallurais', zone: 'Nord-est', note: "Variante proche du corse méridional, parlée en Gallura." },
+          { nom: 'Sassarais', zone: 'Sassari', note: "Variante d'influence toscane, héritage des liens médiévaux avec Pise." },
+        ].map(lang => (
+          <div class="bg-sardaigne-encre p-8">
+            <div class="font-display text-2xl text-sardaigne-parchemin">{lang.nom}</div>
+            <div class="eyebrow text-sardaigne-parchemin/60 mt-2">{lang.zone}</div>
+            <p class="font-serif text-sm text-pierre-200 mt-4 leading-relaxed">{lang.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REPÈRES HISTORIQUES -->
+  <section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="max-w-3xl mb-12">
+      <div class="eyebrow">Repères</div>
+      <h2 class="font-display text-4xl md:text-5xl mt-3 text-sardaigne-encre leading-tight">
+        Quelques ancrages<br/><em class="text-sardaigne-rouge">historiques</em>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      {[
+        { date: '1800 av. J.-C.', titre: "Civilisation nuragique", texte: "Tours mégalithiques (nuraghes) construites par la civilisation autochtone — plus de 7 000 nuraghes recensés sur l'île." },
+        { date: 'IXᵉ – IIᵉ s. av. J.-C.', titre: "Phéniciens et Carthaginois", texte: "Comptoirs côtiers, fondation de Nora, Tharros, Sulki." },
+        { date: '238 av. J.-C.', titre: "Conquête romaine", texte: "La Sardaigne devient province romaine. Intérieur jamais entièrement romanisé (d'où la conservation du sarde)." },
+        { date: 'XIᵉ – XIVᵉ s.', titre: "Les quatre judicats", texte: "Arborée, Cagliari, Torres, Gallura — royaumes indigènes autonomes, avant l'arrivée aragonaise." },
+        { date: '1720', titre: "Royaume de Sardaigne piémontais", texte: "La Maison de Savoie reçoit l'île ; prélude à l'unité italienne." },
+        { date: '1948', titre: "Région autonome", texte: "La Sardaigne devient région à statut spécial de la République italienne." },
+      ].map(r => (
+        <div class="border-l-2 border-sardaigne-rouge pl-6 py-2">
+          <div class="eyebrow text-sardaigne-sepia">{r.date}</div>
+          <h3 class="font-display text-2xl mt-2 text-sardaigne-encre">{r.titre}</h3>
+          <p class="font-serif text-sardaigne-encre/85 mt-2 leading-relaxed">{r.texte}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Transition -->
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <div class="ornament">✦</div>
+    <p class="font-display italic text-2xl md:text-3xl mt-10 text-sardaigne-encre/80">
+      « La Barbagia n'a jamais tout à fait été conquise. »
+    </p>
+    <a href="/banditisme-sarde/" class="inline-flex items-center gap-3 mt-10 font-sans text-sm tracking-widest uppercase text-sardaigne-encre hover:text-sardaigne-rouge transition-colors border-b border-sardaigne-encre hover:border-sardaigne-rouge pb-1">
+      Chapitre IV — Le banditisme sarde
+      <span>→</span>
+    </a>
+  </section>
+
+</Layout>

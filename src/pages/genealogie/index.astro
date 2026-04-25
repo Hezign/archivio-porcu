@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FamilyTree from '../../components/FamilyTree.astro';
+import ContribForm from '../../components/ContribForm.astro';
+import LegalNotice from '../../components/LegalNotice.astro';
+---
+
+<Layout title="Généalogie Porcu · Arbre, méthode, contribution" section="genealogie">
+
+  <!-- Hero -->
+  <section class="max-w-7xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-2 font-display italic text-7xl text-sardaigne-rouge">VI</div>
+      <div class="lg:col-span-10">
+        <div class="eyebrow">Chapitre sixième · dernier</div>
+        <h1 class="font-display text-5xl md:text-7xl mt-3 leading-[0.95] text-sardaigne-encre">
+          <em class="text-sardaigne-rouge">Genealogia</em><br/>
+          Porcu
+        </h1>
+        <p class="font-serif text-xl mt-6 text-sardaigne-encre/80 italic max-w-3xl">
+          Arbre en construction, méthode documentaire, appel à contribution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO MANIFESTO -->
+  <section class="max-w-4xl mx-auto px-6 py-20">
+    <p class="font-serif text-xl md:text-2xl leading-relaxed text-sardaigne-encre/90 drop-cap">
+      Tout ce qui précède — l'étymologie, la carte, l'histoire insulaire, la chronologie du
+      banditisme — n'avait qu'un but : rendre lisible ce que chaque famille Porcu porte sans
+      toujours le savoir. Cette dernière rubrique referme le cercle : elle ouvre la recherche
+      concrète, nom par nom, acte par acte.
+    </p>
+  </section>
+
+  <!-- BANDEAU RGPD AVANT L'ARBRE -->
+  <section class="max-w-7xl mx-auto px-6 py-8">
+    <LegalNotice variant="genealogie" />
+  </section>
+
+  <!-- ARBRE -->
+  <section class="max-w-7xl mx-auto px-6 py-10">
+    <FamilyTree />
+  </section>
+
+  <!-- MÉTHODE -->
+  <section id="methode" class="max-w-7xl mx-auto px-6 py-24">
+    <div class="max-w-3xl mb-16">
+      <div class="eyebrow">Méthode</div>
+      <h2 class="font-display text-5xl md:text-6xl mt-3 text-sardaigne-encre leading-[0.95]">
+        Six étapes<br/>
+        pour <em class="text-sardaigne-rouge">remonter le fil</em>
+      </h2>
+      <p class="font-serif text-lg mt-5 text-sardaigne-encre/80 leading-relaxed">
+        Protocole recommandé pour toute recherche généalogique sérieuse sur un patronyme sarde,
+        adaptable selon la branche familiale concernée.
+      </p>
+    </div>
+
+    <div class="space-y-[1px] bg-sardaigne-encre/15">
+      {[
+        {
+          num: '01',
+          titre: 'Centraliser les documents familiaux',
+          texte: "Livrets de famille, actes, photographies, correspondances, passeports anciens. Tout ce qui est conservé dans les tiroirs des aînés a une valeur — y compris les souvenirs oraux transcrits dès que possible."
+        },
+        {
+          num: '02',
+          titre: 'Fixer les 3 à 5 générations récentes',
+          texte: "Reconstituer d'abord les filiations connues via les actes français (mairies, Archives départementales, demande d'état civil en ligne). C'est la fondation sur laquelle tout le reste s'appuiera."
+        },
+        {
+          num: '03',
+          titre: "Identifier la commune sarde d'origine",
+          texte: "Étape décisive. Priorité aux neuf communes de référence — Villaputzu, Lula, Ghilarza, San Vito, Nuoro, Buddusò, Samassi, Montresta, Sarule — mais toute autre piste documentée doit être suivie."
+        },
+        {
+          num: '04',
+          titre: 'Ouvrir les registres italiens',
+          texte: "Portail Antenati (Archivi di Stato), FamilySearch, mairies sardes (richiesta d'atto), paroisses pour les registres antérieurs à l'état civil unifié (1866). La langue peut exiger une transcription latine ou sarde ancienne."
+        },
+        {
+          num: '05',
+          titre: 'Vérifier chaque filiation',
+          texte: "Chaque lien père-fils / mère-fille doit être adossé à un acte de naissance, de mariage ou de décès consultable. Les homonymies sont fréquentes dans les villages sardes — redoublement de prénoms sur plusieurs générations."
+        },
+        {
+          num: '06',
+          titre: "Règle d'or : aucune filiation sans acte probant",
+          texte: "Mieux vaut une branche inachevée et honnête qu'un arbre fourni de suppositions. Toutes les hypothèses non vérifiées doivent apparaître comme telles, avec la mention « à documenter »."
+        },
+      ].map(step => (
+        <div class="bg-sardaigne-parchemin p-8 md:p-10 grid md:grid-cols-[140px_1fr] gap-6 md:gap-10 items-start">
+          <div class="font-display text-6xl md:text-7xl italic text-sardaigne-rouge leading-none">
+            {step.num}
+          </div>
+          <div>
+            <h3 class="font-display text-2xl md:text-3xl text-sardaigne-encre leading-tight">{step.titre}</h3>
+            <p class="font-serif text-[1.05rem] mt-4 leading-relaxed text-sardaigne-encre/85">{step.texte}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ARCHIVES & RESSOURCES -->
+  <section class="bg-sardaigne-encre text-sardaigne-parchemin py-24">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid lg:grid-cols-12 gap-10 mb-16">
+        <div class="lg:col-span-5">
+          <div class="eyebrow text-sardaigne-parchemin/70">Ressources</div>
+          <h2 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-parchemin leading-[0.95]">
+            Les <em class="text-sardaigne-rouge">portes</em> d'entrée
+          </h2>
+        </div>
+        <div class="lg:col-span-7 flex items-end">
+          <p class="font-serif text-lg text-pierre-100 leading-relaxed">
+            Chacune de ces ressources correspond à une étape distincte du protocole.
+            La plupart sont gratuites ; toutes demandent patience et rigueur de lecture paléographique.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-pierre-800">
+        {[
+          {
+            nom: 'Antenati',
+            org: 'Archivi di Stato · Italie',
+            desc: "Portail officiel italien des archives d'état civil numérisées. Registres communaux consultables librement, souvent jusqu'au XIXᵉ siècle.",
+            cat: 'Italie · gratuit'
+          },
+          {
+            nom: 'FamilySearch',
+            org: 'Église de Jésus-Christ des SDJ',
+            desc: 'Base mondiale avec inventaires sardes importants. Accès gratuit après création de compte.',
+            cat: 'Mondial · gratuit'
+          },
+          {
+            nom: 'Geneanet',
+            org: 'Communauté généalogique',
+            desc: 'Arbres collaboratifs et indexations, utile pour repérer d\'autres branches Porcu déjà travaillées.',
+            cat: 'Collaboratif · freemium'
+          },
+          {
+            nom: 'Mairies sardes',
+            org: 'Comune di ...',
+            desc: "Demande directe d'acte (richiesta d'atto) par courrier ou email. Réponse gratuite pour les descendants directs.",
+            cat: 'Sardaigne · gratuit'
+          },
+          {
+            nom: 'Archives paroissiales',
+            org: 'Diocèses de Sardaigne',
+            desc: "Registres antérieurs à 1866 (mariages, baptêmes, sépultures). Accès sur demande au prêtre responsable.",
+            cat: 'Sardaigne · variable'
+          },
+          {
+            nom: 'Archives départementales',
+            org: 'Moselle, France',
+            desc: "Pour la branche lorraine : actes d'état civil, registres d'immigration, recensements miniers.",
+            cat: 'France · gratuit'
+          },
+        ].map(r => (
+          <div class="bg-sardaigne-encre p-8">
+            <div class="font-display text-2xl text-sardaigne-parchemin">{r.nom}</div>
+            <div class="font-sans text-[0.7rem] tracking-widest uppercase text-sardaigne-parchemin/60 mt-1">{r.org}</div>
+            <p class="font-serif text-sm text-pierre-200 mt-4 leading-relaxed">{r.desc}</p>
+            <div class="mt-5 pt-4 border-t border-pierre-700/60">
+              <span class="inline-block font-mono text-[0.65rem] tracking-widest text-sardaigne-rouge">{r.cat}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE CONTRIBUTION -->
+  <section id="contribuer" class="max-w-7xl mx-auto px-6 py-24">
+    <ContribForm />
+  </section>
+
+  <!-- POSITIONNEMENT ÉTHIQUE FINAL -->
+  <section class="max-w-4xl mx-auto px-6 py-24">
+    <div class="border-y-2 border-sardaigne-encre py-16 text-center">
+      <div class="ornament">✦</div>
+      <p class="font-display text-3xl md:text-5xl leading-tight mt-10 text-sardaigne-encre">
+        <em>« Ce site explore l'histoire culturelle du nom Porcu</em><br/>
+        <em>et le contexte du banditisme sarde,</em><br/>
+        <em class="text-sardaigne-rouge">sans présumer de lien criminel</em><br/>
+        <em>pour l'ensemble des porteurs du nom. »</em>
+      </p>
+      <p class="font-sans text-xs tracking-widest uppercase text-sardaigne-sepia mt-10">
+        Positionnement éditorial — Archivio Porcu
+      </p>
+    </div>
+  </section>
+
+  <!-- Fin / retour accueil -->
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <p class="font-display italic text-2xl md:text-3xl text-sardaigne-encre/80">
+      « Un arbre ne pousse qu'avec ceux qui en prennent soin. Merci de votre contribution. »
+    </p>
+    <a href="/" class="inline-flex items-center gap-3 mt-10 font-sans text-sm tracking-widest uppercase text-sardaigne-encre hover:text-sardaigne-rouge transition-colors border-b border-sardaigne-encre hover:border-sardaigne-rouge pb-1">
+      ← Retour à l'accueil
+    </a>
+  </section>
+
+</Layout>

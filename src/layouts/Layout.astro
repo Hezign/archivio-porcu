@@ -1,0 +1,188 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  section?: string;
+}
+
+const { title, description = "Site culturel consacré au patronyme Porcu, à ses racines sardes, à la diaspora et à l'histoire de la Sardaigne.", section } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const nav = [
+  { label: 'Accueil', path: '/', num: 'I' },
+  { label: 'Le nom', path: '/le-nom-porcu/', num: 'II' },
+  { label: 'Sardaigne', path: '/sardaigne/', num: 'III' },
+  { label: 'Banditisme', path: '/banditisme-sarde/', num: 'IV' },
+  { label: 'Anonima Sarda', path: '/anonima-sarda/', num: 'V' },
+  { label: 'Généalogie', path: '/genealogie/', num: 'VI' },
+];
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#1a150d" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+</head>
+<body>
+
+  <!-- Topbar ornementale -->
+  <div class="bg-sardaigne-encre text-pierre-100 text-[0.68rem] tracking-widest-2 uppercase py-2 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <span class="opacity-70">Archivio Porcu · Projet culturel & généalogique</span>
+      <span class="hidden md:flex items-center gap-3 opacity-70">
+        <span>Sardegna</span>
+        <span class="text-sardaigne-rouge">✦</span>
+        <span>Lorraine</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header éditorial -->
+  <header class="border-b border-sardaigne-encre/20 bg-sardaigne-parchemin/80 backdrop-blur-sm sticky top-0 z-20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="group flex items-center gap-3">
+        <!-- Mini-logo Quattro Mori stylisé -->
+        <svg width="32" height="32" viewBox="0 0 32 32" class="transition-transform group-hover:rotate-6">
+          <rect x="0" y="0" width="32" height="32" fill="#f1e8d4" stroke="#1f1a14" stroke-width="1"/>
+          <line x1="16" y1="0" x2="16" y2="32" stroke="#9a1b1f" stroke-width="2.5"/>
+          <line x1="0" y1="16" x2="32" y2="16" stroke="#9a1b1f" stroke-width="2.5"/>
+          <circle cx="8" cy="8" r="2" fill="#1f1a14"/>
+          <circle cx="24" cy="8" r="2" fill="#1f1a14"/>
+          <circle cx="8" cy="24" r="2" fill="#1f1a14"/>
+          <circle cx="24" cy="24" r="2" fill="#1f1a14"/>
+        </svg>
+        <div class="flex flex-col leading-none">
+          <span class="font-display text-2xl text-sardaigne-encre">Porcu</span>
+          <span class="eyebrow mt-1 text-[0.6rem]">Sardegna · Archivio</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        {nav.map((item) => (
+          <a
+            href={item.path}
+            class={`group relative px-3 py-2 font-sans text-[0.8rem] tracking-wide transition-colors ${currentPath === item.path ? 'text-sardaigne-rouge' : 'text-sardaigne-encre hover:text-sardaigne-rouge'}`}
+          >
+            <span class="text-[0.6rem] text-sardaigne-sepia mr-1.5 font-serif italic">{item.num}</span>
+            {item.label}
+            {currentPath === item.path && (
+              <span class="absolute bottom-0 left-3 right-3 h-[1px] bg-sardaigne-rouge"></span>
+            )}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Burger mobile -->
+      <button
+        id="burger"
+        class="lg:hidden w-10 h-10 flex items-center justify-center"
+        aria-label="Menu"
+      >
+        <div class="w-6 h-[1px] bg-sardaigne-encre relative">
+          <span class="absolute w-6 h-[1px] bg-sardaigne-encre -top-2"></span>
+          <span class="absolute w-6 h-[1px] bg-sardaigne-encre top-2"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav id="mobile-nav" class="hidden lg:hidden border-t border-sardaigne-encre/20">
+      {nav.map((item) => (
+        <a
+          href={item.path}
+          class={`block px-6 py-3 border-b border-sardaigne-encre/10 font-sans text-sm ${currentPath === item.path ? 'text-sardaigne-rouge bg-sardaigne-parchemin' : 'text-sardaigne-encre'}`}
+        >
+          <span class="text-[0.65rem] text-sardaigne-sepia mr-2 font-serif italic">{item.num}</span>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-32 border-t border-sardaigne-encre/20 bg-sardaigne-encre text-pierre-100">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="font-display text-3xl text-sardaigne-parchemin mb-3">Archivio Porcu</div>
+        <p class="text-pierre-200 text-sm leading-relaxed max-w-md">
+          Ce site explore l'histoire culturelle du nom Porcu et le contexte du banditisme sarde,
+          <em class="text-sardaigne-parchemin">sans présumer de lien criminel</em>
+          pour l'ensemble des porteurs du nom.
+        </p>
+      </div>
+
+      <div>
+        <div class="eyebrow text-pierre-300 mb-4">Rubriques</div>
+        <ul class="space-y-2 text-sm font-sans">
+          {nav.slice(1).map((item) => (
+            <li><a href={item.path} class="text-pierre-200 hover:text-sardaigne-parchemin underline-draw">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div class="eyebrow text-pierre-300 mb-4">Sources principales</div>
+        <ul class="space-y-2 text-sm font-sans text-pierre-200">
+          <li>Antenati · Archivi di Stato</li>
+          <li>FamilySearch</li>
+          <li>Geneanet</li>
+          <li>Emeroteca Sarda</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bandeau éthique -->
+    <div class="border-t border-pierre-800 bg-sardaigne-encre">
+      <div class="max-w-7xl mx-auto px-6 py-8">
+        <p class="font-serif text-sm text-pierre-200 leading-relaxed max-w-4xl mx-auto text-center italic">
+          Ce site a une vocation culturelle, historique et généalogique. Les informations publiées
+          sont issues de recherches documentaires et familiales. Aucune affirmation concernant des
+          personnes vivantes ou des liens avec des activités criminelles n'est publiée sans base
+          documentaire sérieuse. Toute personne concernée peut demander une
+          <a href="/mentions-legales/retrait/" class="text-sardaigne-rouge hover:text-sardaigne-parchemin underline transition-colors">rectification ou un retrait</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright + liens légaux -->
+    <div class="border-t border-pierre-800">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-sans text-pierre-300">
+        <span>© 2026 Archivio Porcu · Projet culturel & généalogique</span>
+        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <a href="/mentions-legales/" class="hover:text-sardaigne-parchemin transition-colors">Mentions légales</a>
+          <span class="text-pierre-700">·</span>
+          <a href="/mentions-legales/confidentialite/" class="hover:text-sardaigne-parchemin transition-colors">Confidentialité</a>
+          <span class="text-pierre-700">·</span>
+          <a href="/mentions-legales/retrait/" class="hover:text-sardaigne-parchemin transition-colors">Retrait / rectification</a>
+        </div>
+        <span class="flex items-center gap-3">
+          <span class="text-sardaigne-rouge">✦</span>
+          <span>Sardigna · Lorraine</span>
+          <span class="text-sardaigne-rouge">✦</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobile-nav');
+    burger?.addEventListener('click', () => {
+      mobileNav?.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
