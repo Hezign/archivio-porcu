@@ -72,18 +72,13 @@ function pathFor(key: keyof typeof pageSlugs): string {
         </div>
 
         <div class="relative bg-white shadow-[0_20px_60px_-20px_rgba(26,21,13,0.25)] aspect-[3/2] p-8">
-          <svg viewBox="0 0 300 200" class="w-full h-full">
-            <rect x="0" y="0" width="300" height="200" fill="#f8f4e8"/>
-            <rect x="130" y="0" width="40" height="200" fill="#9a1b1f"/>
-            <rect x="0" y="80" width="300" height="40" fill="#9a1b1f"/>
-            {[{cx:65,cy:40},{cx:235,cy:40},{cx:65,cy:160},{cx:235,cy:160}].map(head => (
-              <g>
-                <circle cx={head.cx} cy={head.cy + 2} r="18" fill="#1a150d"/>
-                <rect x={head.cx - 20} y={head.cy - 4} width="40" height="7" fill="#f8f4e8"/>
-                <path d={`M ${head.cx - 2} ${head.cy + 4} Q ${head.cx + 3} ${head.cy + 8} ${head.cx - 2} ${head.cy + 12}`} fill="none" stroke="#f8f4e8" stroke-width="0.8" opacity="0.4"/>
-              </g>
-            ))}
-          </svg>
+          <img
+            src="/images/flag-sardegna-old.png"
+            alt="Drapeau historique de la Sardaigne — Quattro Mori avec bandeau sur les yeux (XIXᵉ siècle - 1999)"
+            class="w-full h-full object-contain select-none"
+            loading="lazy"
+            draggable="false"
+          />
         </div>
 
         <div class="mt-6 pt-6 border-t border-sardaigne-encre/15">
@@ -112,20 +107,13 @@ function pathFor(key: keyof typeof pageSlugs): string {
         </div>
 
         <div class="relative bg-white shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)] aspect-[3/2] p-8">
-          <svg viewBox="0 0 300 200" class="w-full h-full">
-            <rect x="0" y="0" width="300" height="200" fill="#f8f4e8"/>
-            <rect x="130" y="0" width="40" height="200" fill="#9a1b1f"/>
-            <rect x="0" y="80" width="300" height="40" fill="#9a1b1f"/>
-            {[{cx:65,cy:40},{cx:235,cy:40},{cx:65,cy:160},{cx:235,cy:160}].map(head => (
-              <g>
-                <circle cx={head.cx} cy={head.cy + 2} r="18" fill="#1a150d"/>
-                <rect x={head.cx - 18} y={head.cy - 13} width="36" height="6" fill="#f8f4e8"/>
-                <circle cx={head.cx - 6} cy={head.cy - 1} r="1.5" fill="#f8f4e8"/>
-                <circle cx={head.cx + 6} cy={head.cy - 1} r="1.5" fill="#f8f4e8"/>
-                <path d={`M ${head.cx - 2} ${head.cy + 4} Q ${head.cx + 3} ${head.cy + 8} ${head.cx - 2} ${head.cy + 12}`} fill="none" stroke="#f8f4e8" stroke-width="0.8" opacity="0.4"/>
-              </g>
-            ))}
-          </svg>
+          <img
+            src="/images/flag-sardegna-modern.png"
+            alt="Drapeau officiel de la Sardaigne — Quattro Mori avec bandeau sur le front (depuis 1999)"
+            class="w-full h-full object-contain select-none"
+            loading="lazy"
+            draggable="false"
+          />
         </div>
 
         <div class="mt-6 pt-6 border-t border-pierre-700">
