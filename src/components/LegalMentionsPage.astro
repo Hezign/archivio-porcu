@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations, pageSlugs } from '../i18n';
+import { langPrefix } from '../i18n/config';
+import type { Lang } from '../i18n/config';
+
+export interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const m = t.legal.mentions;
+const prefix = langPrefix(lang);
+
+function pathFor(key: keyof typeof pageSlugs): string {
+  const slug = pageSlugs[key][lang];
+  if (!slug) return prefix === '' ? '/' : `${prefix}/`;
+  return `${prefix}/${slug}/`;
+}
+---
+
+<Layout title={m.metaTitle} lang={lang} pageKey="legalMentions">
+
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-16 border-b border-sardaigne-encre/15">
+    <div class="eyebrow">{m.eyebrow}</div>
+    <h1 class="font-display text-5xl md:text-6xl mt-4 text-sardaigne-encre leading-[0.95]">
+      {m.title1} <em class="text-sardaigne-rouge">{m.title2}</em>
+    </h1>
+    <p class="font-serif text-lg mt-6 text-sardaigne-encre/80 italic">
+      {m.sub}
+    </p>
+  </section>
+
+  <article class="max-w-3xl mx-auto px-6 py-16 font-serif text-[1.05rem] leading-relaxed text-sardaigne-encre/90 space-y-12">
+
+    <section>
+      <div class="eyebrow mb-3">{m.s1Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s1Title}</h2>
+      <p>{m.s1Text}</p>
+      <dl class="mt-6 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-y-3 gap-x-6 font-sans text-sm">
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s1Name}</dt>
+        <dd>{m.s1NameVal}</dd>
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s1Email}</dt>
+        <dd>{m.s1EmailVal}</dd>
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s1Nature}</dt>
+        <dd>{m.s1NatureVal}</dd>
+      </dl>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="eyebrow mb-3">{m.s2Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s2Title}</h2>
+      <dl class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-y-3 gap-x-6 font-sans text-sm">
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s2Company}</dt>
+        <dd>{m.s2CompanyVal}</dd>
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s2Address}</dt>
+        <dd>{m.s2AddressVal}</dd>
+        <dt class="text-sardaigne-sepia uppercase tracking-widest text-xs">{m.s2Site}</dt>
+        <dd><a href="https://vercel.com" class="underline hover:text-sardaigne-rouge">vercel.com</a></dd>
+      </dl>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="eyebrow mb-3">{m.s3Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s3Title}</h2>
+      <p>
+        {m.s3Text1}
+        <a href={pathFor('legalRemoval')} class="underline text-sardaigne-rouge">{m.s3Link}</a>.
+      </p>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="eyebrow mb-3">{m.s4Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s4Title}</h2>
+      <p>{m.s4P1}</p>
+      <p class="mt-4">{m.s4P2}</p>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="eyebrow mb-3">{m.s5Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s5Title}</h2>
+      <p>{m.s5Text}</p>
+    </section>
+
+    <div class="rule"></div>
+
+    <section>
+      <div class="eyebrow mb-3">{m.s6Eyebrow}</div>
+      <h2 class="font-display text-3xl text-sardaigne-encre mb-4">{m.s6Title}</h2>
+      <p>{m.s6Text}</p>
+    </section>
+
+    <div class="pt-10 border-t border-sardaigne-encre/15">
+      <div class="grid md:grid-cols-3 gap-4 text-sm font-sans">
+        <a href={pathFor('legalPrivacy')} class="block p-5 border border-sardaigne-encre/20 hover:bg-sardaigne-encre hover:text-sardaigne-parchemin transition-colors">
+          <div class="eyebrow mb-2">{m.navNext}</div>
+          {m.navPrivacy}
+        </a>
+        <a href={pathFor('legalRemoval')} class="block p-5 border border-sardaigne-encre/20 hover:bg-sardaigne-encre hover:text-sardaigne-parchemin transition-colors">
+          <div class="eyebrow mb-2">{m.navRights}</div>
+          {m.navRemoval}
+        </a>
+        <a href={pathFor('home')} class="block p-5 border border-sardaigne-encre/20 hover:bg-sardaigne-encre hover:text-sardaigne-parchemin transition-colors">
+          <div class="eyebrow mb-2">{m.navBack}</div>
+          {m.navHome}
+        </a>
+      </div>
+    </div>
+
+  </article>
+
+</Layout>
