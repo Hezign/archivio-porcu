@@ -60,43 +60,45 @@ const points = communes.map(c => ({
           </filter>
         </defs>
 
-        <!-- Silhouette Sardaigne (approximation) -->
+        <!-- Silhouette Sardaigne — basée sur les coordonnées géographiques réelles
+             (Capo Testa, Capo Caccia, Capo Spartivento, Capo Carbonara, etc.) -->
         <path
-          d="M 285 60
-             C 310 55, 340 70, 360 95
-             C 385 120, 395 155, 390 190
-             C 410 215, 430 250, 425 295
-             C 445 325, 450 370, 440 410
-             C 455 445, 450 490, 430 525
-             C 445 560, 440 605, 410 640
-             C 395 680, 360 710, 325 725
-             C 295 745, 260 750, 225 735
-             C 195 720, 175 690, 170 655
-             C 155 625, 155 585, 170 555
-             C 160 520, 165 480, 180 450
-             C 170 415, 175 375, 195 345
-             C 180 310, 185 270, 210 240
-             C 200 205, 215 170, 245 145
-             C 240 115, 255 85, 285 60 Z"
+          d="M 356.6 14.7 L 365.1 20.4 Q 373.7 26.1 390.9 37.5 Q 408.0 49.0 437.1 51.5 Q 466.3 53.9 474.9 58.0 Q 483.4 62.0 491.1 83.2 Q 498.9 104.5 510.9 120.8 Q 522.9 137.1 539.1 153.4 Q 555.4 169.8 567.4 195.9 Q 579.4 222.0 569.1 261.2 Q 558.9 300.4 556.3 349.4 Q 553.7 398.4 545.2 431.0 Q 536.6 463.7 532.3 493.0 Q 528.0 522.4 524.5 555.1 Q 521.1 587.8 517.7 604.1 Q 514.3 620.4 507.4 644.9 Q 500.6 669.4 498.9 689.0 Q 497.1 708.6 450.9 716.8 Q 404.6 724.9 382.3 734.7 Q 360.0 744.5 330.9 754.3 Q 301.7 764.1 284.5 772.2 Q 267.4 780.4 229.7 785.3 Q 192.0 790.2 169.7 779.6 Q 147.4 769.0 128.6 747.8 Q 109.7 726.5 102.8 701.2 Q 96.0 675.9 98.5 644.9 Q 101.1 613.9 105.4 581.2 Q 109.7 548.6 109.7 521.6 Q 109.7 494.7 111.4 477.5 Q 113.1 460.4 114.8 452.2 Q 116.6 444.1 106.3 419.6 Q 96.0 395.1 84.8 373.9 Q 73.7 352.7 76.3 320.0 Q 78.9 287.3 81.5 261.2 Q 84.0 235.1 90.0 215.5 Q 96.0 195.9 80.5 173.9 Q 65.1 151.8 46.2 139.6 Q 27.4 127.3 34.2 115.1 Q 41.1 102.9 69.4 93.1 Q 97.7 83.3 107.2 77.5 Q 116.6 71.8 136.3 66.9 Q 156.0 62.0 191.2 55.5 Q 226.3 49.0 245.2 55.5 Q 264.0 62.0 286.3 57.1 Q 308.6 52.2 317.1 49.8 Q 325.7 47.3 334.3 41.6 Q 342.9 35.9 349.8 25.3 L 356.6 14.7 Z"
           fill="url(#hatch)"
           stroke="#1f1a14"
           stroke-width="1.5"
+          stroke-linejoin="round"
           opacity="0.95"
         />
 
-        <!-- Relief — Barbagia / Supramonte (zone centrale) -->
-        <g opacity="0.35" stroke="#8a6a3e" fill="none" stroke-width="0.6">
-          <ellipse cx="290" cy="340" rx="70" ry="45" />
-          <ellipse cx="290" cy="340" rx="55" ry="35" />
-          <ellipse cx="290" cy="340" rx="40" ry="25" />
-          <ellipse cx="290" cy="340" rx="25" ry="15" />
-          <text x="290" y="295" text-anchor="middle" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic">Barbagia</text>
+        <!-- Îles satellites principales -->
+        <!-- Asinara (NO) -->
+        <ellipse cx="50" cy="65" rx="6" ry="14" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+        <!-- La Maddalena (NE) -->
+        <circle cx="500" cy="40" r="4" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+        <circle cx="510" cy="48" r="3" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+        <!-- Tavolara (E) -->
+        <ellipse cx="555" cy="220" rx="5" ry="3" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+        <!-- Sant'Antioco (SO) -->
+        <path d="M 80 660 Q 90 655 95 670 Q 92 690 78 685 Q 70 678 80 660 Z" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+        <!-- San Pietro (SO) -->
+        <ellipse cx="62" cy="650" rx="6" ry="5" fill="url(#hatch)" stroke="#1f1a14" stroke-width="1" opacity="0.95"/>
+
+        <!-- Relief — Barbagia / Supramonte (zone centre-est, autour de Nuoro) -->
+        <g opacity="0.4" stroke="#8a6a3e" fill="none" stroke-width="0.6">
+          <ellipse cx="400" cy="340" rx="65" ry="40" />
+          <ellipse cx="400" cy="340" rx="50" ry="30" />
+          <ellipse cx="400" cy="340" rx="35" ry="20" />
+          <ellipse cx="400" cy="340" rx="22" ry="12" />
+          <text x="400" y="295" text-anchor="middle" font-family="EB Garamond" font-size="11" fill="#8a6a3e" font-style="italic" opacity="0.9">Barbagia</text>
         </g>
 
-        <!-- Légende régionale -->
-        <text x="310" y="145" font-family="EB Garamond" font-size="9" fill="#8a6a3e" font-style="italic" opacity="0.6">Gallura</text>
-        <text x="220" y="540" font-family="EB Garamond" font-size="9" fill="#8a6a3e" font-style="italic" opacity="0.6">Campidano</text>
-        <text x="210" y="420" font-family="EB Garamond" font-size="9" fill="#8a6a3e" font-style="italic" opacity="0.6">Oristano</text>
+        <!-- Légende régionale (positions ajustées sur la silhouette précise) -->
+        <text x="430" y="100" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic" opacity="0.7">Gallura</text>
+        <text x="280" y="640" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic" opacity="0.7">Campidano</text>
+        <text x="190" y="430" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic" opacity="0.7">Oristano</text>
+        <text x="220" y="200" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic" opacity="0.7">Sassarese</text>
+        <text x="500" y="500" font-family="EB Garamond" font-size="10" fill="#8a6a3e" font-style="italic" opacity="0.7">Ogliastra</text>
 
         <!-- Communes -->
         {points.map((c, i) => (
