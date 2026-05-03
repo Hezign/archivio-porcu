@@ -91,6 +91,21 @@ export const fr = {
     diasporaStat1: 'Vague migratoire',
     diasporaStat2: 'Réunion familiale attestée',
     diasporaCta: 'Lire la section diaspora',
+    aboutEyebrow: 'À propos',
+    aboutTitle1: 'Un nom,',
+    aboutTitle2: 'une quête',
+    aboutSubtitle: 'Harry Porcu, fondateur du projet',
+    aboutP1:
+      "Je m'appelle Harry Porcu. Petit-fils d'immigrés sardes installés en Lorraine dans les années 1950, j'ai grandi avec ce nom singulier sans en connaître véritablement l'histoire. Quelques bribes familiales : un village quelque part dans la Barbagia, des aïeux pasteurs ou mineurs, des récits transmis à demi-mot.",
+    aboutP2:
+      "Ce projet est né d'une nécessité simple : rendre visible et accessible ce que l'histoire familiale, la géographie insulaire et la diaspora ont dispersé. Comprendre pourquoi nous portons ce nom. D'où il vient. Comment il s'est inscrit dans la mémoire d'une île, dans des registres paroissiaux du XVIIIᵉ siècle, dans des bergeries de la Barbagia, dans la migration vers les mines lorraines.",
+    aboutP3:
+      "Archivio Porcu se veut à la fois un travail de mémoire familiale et un objet culturel ouvert : sur l'étymologie sarde, sur l'identité de l'île, sur les phénomènes historiques qui l'ont traversée, sur la généalogie rigoureuse. Un projet documenté, ouvert aux contributions, fidèle à une exigence : aucune affirmation sans source, aucune filiation sans acte probant.",
+    aboutP4:
+      "Si vous portez le nom Porcu, si un de vos aïeux le portait, ou si vous avez des documents, des photographies, des récits susceptibles d'enrichir la recherche, vous êtes les bienvenus.",
+    aboutSign: 'Harry Porcu',
+    aboutLocation: 'Lyon, France',
+    aboutCta: 'Contribuer à la recherche',
     quote: '« Sa limba est sa nobiltade de su coro. »',
     quoteSub: 'La langue est la noblesse du cœur, proverbe sarde',
   },

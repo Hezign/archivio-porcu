@@ -89,6 +89,21 @@ export const it = {
     diasporaStat1: 'Ondata migratoria',
     diasporaStat2: 'Raduno familiare attestato',
     diasporaCta: 'Leggi la sezione diaspora',
+    aboutEyebrow: 'Chi sono',
+    aboutTitle1: 'Un cognome,',
+    aboutTitle2: 'una ricerca',
+    aboutSubtitle: 'Harry Porcu, fondatore del progetto',
+    aboutP1:
+      "Mi chiamo Harry Porcu. Nipote di immigrati sardi stabilitisi in Lorena negli anni Cinquanta, sono cresciuto con questo cognome singolare senza conoscerne veramente la storia. Alcuni frammenti familiari: un paese da qualche parte nella Barbagia, antenati pastori o minatori, racconti trasmessi a mezza voce.",
+    aboutP2:
+      "Questo progetto nasce da una necessità semplice: rendere visibile e accessibile ciò che la storia familiare, la geografia insulare e la diaspora hanno disperso. Capire perché portiamo questo cognome. Da dove viene. Come si è iscritto nella memoria di un'isola, nei registri parrocchiali del XVIII secolo, negli ovili della Barbagia, nella migrazione verso le miniere della Lorena.",
+    aboutP3:
+      "Archivio Porcu vuole essere al tempo stesso un lavoro di memoria familiare e un oggetto culturale aperto: sull'etimologia sarda, sull'identità dell'isola, sui fenomeni storici che l'hanno attraversata, sulla genealogia rigorosa. Un progetto documentato, aperto ai contributi, fedele a un'esigenza: nessuna affermazione senza fonte, nessuna filiazione senza atto probante.",
+    aboutP4:
+      "Se portate il cognome Porcu, se un vostro antenato lo portava, o se avete documenti, fotografie, racconti che possano arricchire la ricerca, siete i benvenuti.",
+    aboutSign: 'Harry Porcu',
+    aboutLocation: 'Lione, Francia',
+    aboutCta: 'Contribuire alla ricerca',
     quote: '« Sa limba est sa nobiltade de su coro. »',
     quoteSub: 'La lingua è la nobiltà del cuore, proverbio sardo',
   },

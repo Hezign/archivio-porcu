@@ -89,6 +89,21 @@ export const en = {
     diasporaStat1: 'Migration wave',
     diasporaStat2: 'Documented family reunion',
     diasporaCta: 'Read the diaspora section',
+    aboutEyebrow: 'About',
+    aboutTitle1: 'A name,',
+    aboutTitle2: 'a quest',
+    aboutSubtitle: 'Harry Porcu, founder of the project',
+    aboutP1:
+      "My name is Harry Porcu. Grandson of Sardinian immigrants who settled in Lorraine in the 1950s, I grew up with this singular surname without truly knowing its history. A few family fragments: a village somewhere in Barbagia, ancestors who were shepherds or miners, stories passed down in half-tones.",
+    aboutP2:
+      "This project was born of a simple necessity: to make visible and accessible what family history, insular geography and diaspora have scattered. To understand why we bear this name. Where it comes from. How it was inscribed in the memory of an island, in 18th-century parish registers, in the shepherd huts of Barbagia, in the migration to the Lorraine mines.",
+    aboutP3:
+      "Archivio Porcu aims to be both a work of family memory and an open cultural project: on Sardinian etymology, on the identity of the island, on the historical phenomena that crossed it, on rigorous genealogy. A documented project, open to contributions, faithful to one requirement: no claim without source, no filiation without supporting evidence.",
+    aboutP4:
+      "If you bear the Porcu name, if one of your ancestors bore it, or if you have documents, photographs, or stories that could enrich the research, you are welcome.",
+    aboutSign: 'Harry Porcu',
+    aboutLocation: 'Lyon, France',
+    aboutCta: 'Contribute to the research',
     quote: '« Sa limba est sa nobiltade de su coro. »',
     quoteSub: 'Language is the nobility of the heart, Sardinian proverb',
   },
