@@ -1,4 +1,4 @@
-// Frise chronologique — contexte historique du banditisme sarde
+// Frise chronologique, contexte historique du banditisme sarde
 // et des enlèvements contre rançon (Anonima Sarda), 1960-1997
 export const chronologie = [
   {
@@ -33,7 +33,7 @@ export const chronologie = [
     periode: '1968-1992',
     date: '1968',
     titre: 'Graziano Mesina',
-    texte: "Bandit d'Orgosolo devenu figure médiatique, plusieurs fois évadé et capturé. Incarne l'ambiguïté populaire du banditisme sarde — à la fois traqué et mythifié.",
+    texte: "Bandit d'Orgosolo devenu figure médiatique, plusieurs fois évadé et capturé. Incarne l'ambiguïté populaire du banditisme sarde, à la fois traqué et mythifié.",
     categorie: 'figure',
   },
   {
@@ -47,7 +47,7 @@ export const chronologie = [
     periode: '1992',
     date: '1992-1998',
     titre: "Affaire Farouk Kassam",
-    texte: "Enlèvement d'un enfant de 7 ans, libéré après sept mois — l'un des derniers séquestres médiatiquement marquants avant l'extinction progressive du phénomène.",
+    texte: "Enlèvement d'un enfant de 7 ans, libéré après sept mois, l'un des derniers séquestres médiatiquement marquants avant l'extinction progressive du phénomène.",
     categorie: 'anonima',
   },
   {

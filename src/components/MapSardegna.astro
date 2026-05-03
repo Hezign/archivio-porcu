@@ -199,12 +199,12 @@ const lp = panelLabels[lang];
     if (!c) return;
     if (els.name) els.name.textContent = c.nom;
     if (els.region) els.region.textContent = c.region || '';
-    if (els.province) els.province.textContent = c.province || '—';
-    if (els.attestation) els.attestation.textContent = c.attestation || '—';
+    if (els.province) els.province.textContent = c.province || '-';
+    if (els.attestation) els.attestation.textContent = c.attestation || '-';
     if (els.population) els.population.textContent = c.population
-      ? `${c.population.toLocaleString('fr-FR')} ${lp.inhabitants}` : '—';
+      ? `${c.population.toLocaleString('fr-FR')} ${lp.inhabitants}` : '-';
     if (els.altitude) els.altitude.textContent = c.altitude
-      ? `${c.altitude} ${lp.meters}` : '—';
+      ? `${c.altitude} ${lp.meters}` : '-';
 
     let noteText = c.notes;
     if (lang === 'it' && c.notesIt) noteText = c.notesIt;

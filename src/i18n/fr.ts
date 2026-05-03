@@ -19,7 +19,15 @@ export const fr = {
       "Ce site a une vocation culturelle, historique et généalogique. Les informations publiées sont issues de recherches documentaires et familiales. Aucune affirmation concernant des personnes vivantes ou des liens avec des activités criminelles n'est publiée sans base documentaire sérieuse. Toute personne concernée peut demander une",
     footerEthicalLink: 'rectification ou un retrait',
     footerCopy: '© 2026 Archivio Porcu · Projet culturel & généalogique',
-    footerTagline: 'Sardigna · Lorraine',
+    footerTagline: 'Sardigna',
+    byHezign: 'Conçu par',
+    cookies: {
+      title: 'Cookies & vie privée',
+      message:
+        "Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement. Aucun cookie de traçage, ni outil d'analyse comportementale (Google Analytics, etc.) n'est déposé. Vos données ne sont jamais partagées avec des tiers.",
+      accept: 'Compris',
+      learnMore: 'Politique de confidentialité',
+    },
     legalLinks: {
       mentions: 'Mentions légales',
       privacy: 'Confidentialité',
@@ -36,38 +44,38 @@ export const fr = {
   // ──────── Page Accueil ────────
   home: {
     metaTitle: 'Porcu · Archivio culturel du patronyme sarde',
-    heroEyebrow: 'Sardegna · 1850 — 2026',
+    heroEyebrow: 'Sardegna · 1850, 2026',
     heroTitle1: 'Un nom,',
     heroTitle2: 'une île,',
     heroTitle3: 'une mémoire.',
     heroIntro:
-      "Porcu. Du sarde porcu, désignation ancienne issue de la vie pastorale — un patronyme inscrit depuis des siècles dans la pierre des villages de la Barbagia, de l'Ogliastra et du Campidano. Ce site réunit ce que l'histoire, la langue et la diaspora ont dispersé.",
+      "Porcu. Du sarde porcu, désignation ancienne issue de la vie pastorale, un patronyme inscrit depuis des siècles dans la pierre des villages de la Barbagia, de l'Ogliastra et du Campidano. Ce site réunit ce que l'histoire, la langue et la diaspora ont dispersé.",
     ctaExplore: 'Explorer le nom',
     ctaContribute: 'Contribuer',
     plaqueEtymology: 'Étymologie',
     plaqueWord: 'porcu',
-    plaqueGloss: 'n. m. — sarde',
+    plaqueGloss: 'n. m., sarde',
     plaqueDef:
       "Nom issu du lexique animalier, typique des patronymes sardes anciens formés avant le XVIIIᵉ siècle.",
     manifestoEyebrow: 'Un projet culturel',
     manifestoTitle:
       "Un site culturel sur le patronyme Porcu, son île d'origine, et ses chemins d'exil",
     manifestoP1:
-      "Ce site explore l'histoire culturelle du nom Porcu et le contexte du banditisme sarde — phénomène historique réel de la Sardaigne intérieure — sans présumer de lien criminel pour l'ensemble des porteurs du nom.",
+      "Ce site explore l'histoire culturelle du nom Porcu et le contexte du banditisme sarde, phénomène historique réel de la Sardaigne intérieure, sans présumer de lien criminel pour l'ensemble des porteurs du nom.",
     manifestoP2:
       "Il mêle trois fils : l'étymologie sarde, le contexte historique insulaire, et la généalogie familiale, avec une même exigence : aucune filiation sans acte probant, aucune association sans source vérifiable.",
     indexEyebrow: 'Index',
     indexTitle1: 'Six',
     indexTitle2: 'chapitres',
     indexLead:
-      "De l'étymologie du nom à la frise des enlèvements de 1960-1997, en passant par la cartographie des communes et l'arbre généalogique en construction — chaque rubrique est un fragment du récit.",
+      "De l'étymologie du nom à la frise des enlèvements de 1960-1997, en passant par la cartographie des communes et l'arbre généalogique en construction, chaque rubrique est un fragment du récit.",
     chapters: [
       { num: 'II', title: 'Le nom Porcu', desc: 'Étymologie sarde, attestations, cartographie des communes.' },
       { num: 'III', title: 'Sardaigne, identité', desc: "Culture, langue, drapeau Quattro Mori, histoire insulaire." },
       { num: 'IV', title: 'Banditisme sarde', desc: "Phénomène rural, codes d'honneur, Barbagia et Orgosolo." },
       { num: 'V', title: 'Anonima Sarda', desc: 'Enlèvements 1960-1997, contexte, bilan historiographique.' },
       { num: 'VI', title: 'Généalogie', desc: 'Arbre, archives, appels à contribution des porteurs du nom.' },
-      { num: '✦', title: 'Méthode & sources', desc: 'Geneanet, FamilySearch, Antenati — toutes les voies documentaires.' },
+      { num: '✦', title: 'Méthode & sources', desc: 'Geneanet, FamilySearch, Antenati, toutes les voies documentaires.' },
     ],
     diasporaEyebrow: 'Diaspora',
     diasporaTitle1: 'De la',
@@ -77,14 +85,14 @@ export const fr = {
     diasporaP1:
       "Dans les années 1950, comme tant d'autres familles de l'Italie du Sud, des Porcu quittent la Sardaigne pour la France. Leur destination : Bousbach, Forbach, et plus largement le bassin houiller lorrain, où la main-d'œuvre étrangère est alors massivement recrutée dans les mines.",
     diasporaP2:
-      "Cette communauté a maintenu vivaces, sur plusieurs générations, les liens avec l'île d'origine — liens parfois ranimés par des rassemblements familiaux, comme celui, documenté, de 2018.",
+      "Cette communauté a maintenu vivaces, sur plusieurs générations, les liens avec l'île d'origine, liens parfois ranimés par des rassemblements familiaux, comme celui, documenté, de 2018.",
     diasporaP3:
       "Comprendre le patronyme Porcu, c'est donc tenir les deux bouts d'un même fil : le village pastoral de la Barbagia et la cité minière lorraine.",
     diasporaStat1: 'Vague migratoire',
     diasporaStat2: 'Réunion familiale attestée',
     diasporaCta: 'Lire la section diaspora',
     quote: '« Sa limba est sa nobiltade de su coro. »',
-    quoteSub: 'La langue est la noblesse du cœur — proverbe sarde',
+    quoteSub: 'La langue est la noblesse du cœur, proverbe sarde',
   },
 
   // ──────── Page Le nom ────────
@@ -96,15 +104,15 @@ export const fr = {
     etymologyTitle1: 'Une racine',
     etymologyTitle2: 'animalière',
     etymologyP1:
-      "Le patronyme Porcu vient du mot sarde porcu, qui désigne le cochon. Il appartient à la catégorie très fréquente, en Sardaigne, des noms de famille dérivés d'animaux ou d'éléments du monde pastoral — catégorie typique des patronymes sardes formés avant l'uniformisation toponymique plus tardive.",
+      "Le patronyme Porcu vient du mot sarde porcu, qui désigne le cochon. Il appartient à la catégorie très fréquente, en Sardaigne, des noms de famille dérivés d'animaux ou d'éléments du monde pastoral, catégorie typique des patronymes sardes formés avant l'uniformisation toponymique plus tardive.",
     etymologyP2:
       "Loin de toute péjoration moderne, ces noms animaliers témoignent d'une économie rurale et pastorale où le bétail structurait la vie des villages : ils désignaient souvent un trait, une fonction ou un patrimoine familial. Des patronymes comme Cane, Pisu, Boi relèvent de la même logique.",
     etymologyP3:
       "L'attestation du nom est ancienne et stable : les registres paroissiaux et fiscaux sardes font apparaître des Porcu dès la période moderne, particulièrement dans la moitié sud de l'île et dans la Barbagia intérieure.",
     dictEyebrow: 'Entrée de dictionnaire',
-    dictGloss: 'n. m. — sarde campidanais & logudorien',
+    dictGloss: 'n. m., sarde campidanais & logudorien',
     dictDef1: "Cochon domestique, animal d'élevage central dans l'économie pastorale sarde.",
-    dictDef2: "Par extension — patronyme attesté depuis la période moderne dans plusieurs communes de l'île.",
+    dictDef2: "Par extension, patronyme attesté depuis la période moderne dans plusieurs communes de l'île.",
     dictEtym:
       "Étymologie : du latin porcus, via le sarde médiéval. Famille lexicale riche : porcarzu (porcher), porcheddu (cochonnet, spécialité culinaire régionale).",
     cartoEyebrow: 'Répartition',
@@ -124,7 +132,7 @@ export const fr = {
     diasporaSectionP3:
       "Cette branche lorraine constitue aujourd'hui un point d'entrée privilégié pour les recherches généalogiques : les actes d'état civil français de la seconde moitié du XXᵉ siècle permettent souvent de remonter jusqu'à la commune sarde d'origine.",
     transitionQuote: "« Pour lire un nom, il faut d'abord lire l'île. »",
-    transitionLink: 'Chapitre III — Sardaigne, identité',
+    transitionLink: 'Chapitre III, Sardaigne, identité',
     // Pour la carte (composant)
     map: {
       eyebrow: 'Tabula Sardiniae',
@@ -145,18 +153,18 @@ export const fr = {
     chapterTitle2: 'identità',
     chapterSub: "Culture, langue et symboles d'une île méditerranéenne à l'identité singulière.",
     intro:
-      "La Sardaigne n'est pas, au sens ordinaire, une « région » d'Italie. Elle est une île-continent, avec sa langue propre — le sardo, reconnu comme langue à part entière —, ses archaïsmes culturels, ses traditions pastorales millénaires et une histoire marquée par les influences phénicienne, punique, romaine, byzantine, pisane, aragonaise, espagnole, piémontaise, puis italienne.",
+      "La Sardaigne n'est pas, au sens ordinaire, une « région » d'Italie. Elle est une île-continent, avec sa langue propre, le sardo, reconnu comme langue à part entière -, ses archaïsmes culturels, ses traditions pastorales millénaires et une histoire marquée par les influences phénicienne, punique, romaine, byzantine, pisane, aragonaise, espagnole, piémontaise, puis italienne.",
     flagEyebrow: 'Quattro Mori',
     flagTitle1: 'Quatre Maures',
     flagTitle2: 'sur croix de',
     flagTitle3: 'Saint-Georges',
     flagP1:
-      "Le drapeau sarde — d'origine médiévale, probablement importé par la couronne d'Aragon au XIVᵉ siècle — montre quatre têtes de Maures arrangées autour d'une croix rouge sur champ blanc. Selon la tradition dominante, il commémorerait les victoires chrétiennes sur les Sarrasins lors de la Reconquista ibérique, mais son interprétation exacte reste débattue.",
+      "Le drapeau sarde, d'origine médiévale, probablement importé par la couronne d'Aragon au XIVᵉ siècle, montre quatre têtes de Maures arrangées autour d'une croix rouge sur champ blanc. Selon la tradition dominante, il commémorerait les victoires chrétiennes sur les Sarrasins lors de la Reconquista ibérique, mais son interprétation exacte reste débattue.",
     flagP2:
-      "Ce drapeau a connu deux grandes versions historiques qui se distinguent par un détail en apparence minuscule — la position du bandeau des Maures — mais dont la portée symbolique est considérable. Ce n'est pas qu'un choix graphique : c'est une affirmation politique.",
+      "Ce drapeau a connu deux grandes versions historiques qui se distinguent par un détail en apparence minuscule, la position du bandeau des Maures, mais dont la portée symbolique est considérable. Ce n'est pas qu'un choix graphique : c'est une affirmation politique.",
     flagOldEyebrow: 'Version ancienne',
     flagOldTitle: 'Bandeau sur les yeux',
-    flagOldPeriod: 'XIXᵉ s. — 1999',
+    flagOldPeriod: 'XIXᵉ s., 1999',
     flagOldRead: 'Lecture symbolique',
     flagOldText:
       "Domination, asservissement. Cette représentation, diffusée à partir du XIXᵉ siècle pour des raisons qui restent mal expliquées, évoque la figure du vaincu aux yeux voilés.",
@@ -165,7 +173,7 @@ export const fr = {
     flagNewPeriod: 'Depuis',
     flagNewRead: 'Lecture symbolique',
     flagNewText:
-      "Liberté, dignité, identité retrouvée. Adoptée par la Région autonome en 1999 avec les yeux visibles et l'orientation des têtes modifiée — un regard tourné vers l'avenir.",
+      "Liberté, dignité, identité retrouvée. Adoptée par la Région autonome en 1999 avec les yeux visibles et l'orientation des têtes modifiée, un regard tourné vers l'avenir.",
     flagSynthEyebrow: 'Du vaincu au libre',
     flagSynth:
       "Le passage du bandeau sur les yeux au bandeau sur le front est souvent lu comme le passage d'un symbole de soumission à un symbole de liberté et d'identité sarde affirmée.",
@@ -188,15 +196,15 @@ export const fr = {
     timeTitle1: 'Quelques ancrages',
     timeTitle2: 'historiques',
     timeline: [
-      { date: '1800 av. J.-C.', titre: 'Civilisation nuragique', texte: "Tours mégalithiques (nuraghes) construites par la civilisation autochtone — plus de 7 000 nuraghes recensés sur l'île." },
+      { date: '1800 av. J.-C.', titre: 'Civilisation nuragique', texte: "Tours mégalithiques (nuraghes) construites par la civilisation autochtone, plus de 7 000 nuraghes recensés sur l'île." },
       { date: 'IXᵉ – IIᵉ s. av. J.-C.', titre: 'Phéniciens et Carthaginois', texte: 'Comptoirs côtiers, fondation de Nora, Tharros, Sulki.' },
       { date: '238 av. J.-C.', titre: 'Conquête romaine', texte: "La Sardaigne devient province romaine. Intérieur jamais entièrement romanisé (d'où la conservation du sarde)." },
-      { date: 'XIᵉ – XIVᵉ s.', titre: 'Les quatre judicats', texte: "Arborée, Cagliari, Torres, Gallura — royaumes indigènes autonomes, avant l'arrivée aragonaise." },
+      { date: 'XIᵉ – XIVᵉ s.', titre: 'Les quatre judicats', texte: "Arborée, Cagliari, Torres, Gallura, royaumes indigènes autonomes, avant l'arrivée aragonaise." },
       { date: '1720', titre: 'Royaume de Sardaigne piémontais', texte: "La Maison de Savoie reçoit l'île ; prélude à l'unité italienne." },
       { date: '1948', titre: 'Région autonome', texte: 'La Sardaigne devient région à statut spécial de la République italienne.' },
     ],
     transitionQuote: "« La Barbagia n'a jamais tout à fait été conquise. »",
-    transitionLink: 'Chapitre IV — Le banditisme sarde',
+    transitionLink: 'Chapitre IV, Le banditisme sarde',
   },
 
   // ──────── Page Banditisme ────────
@@ -210,18 +218,18 @@ export const fr = {
     geoTitle2: 'Barbagia',
     geoTitle3: ", cœur de l'île",
     geoP1:
-      "Le banditisme sarde s'est développé dans une zone précise : l'intérieur montagneux de l'île, et singulièrement la Barbagia — région qui tire son nom de l'antiquité romaine (Barbaria, terre des « barbares » non romanisés).",
+      "Le banditisme sarde s'est développé dans une zone précise : l'intérieur montagneux de l'île, et singulièrement la Barbagia, région qui tire son nom de l'antiquité romaine (Barbaria, terre des « barbares » non romanisés).",
     geoP2:
-      "Là, les massifs du Gennargentu et du Supramonte, les vallées isolées et les hauts plateaux d'élevage ont entretenu une économie pastorale fermée, où le pouvoir central — piémontais puis italien — n'a longtemps exercé qu'une autorité nominale.",
+      "Là, les massifs du Gennargentu et du Supramonte, les vallées isolées et les hauts plateaux d'élevage ont entretenu une économie pastorale fermée, où le pouvoir central, piémontais puis italien, n'a longtemps exercé qu'une autorité nominale.",
     geoP3:
-      "Les villages mythiques de ce phénomène — Orgosolo, Oliena, Nuoro, Orune — sont tous situés dans cet intérieur. L'iconographie populaire, notamment les murales d'Orgosolo, témoigne aujourd'hui encore de cette mémoire ambivalente.",
+      "Les villages mythiques de ce phénomène, Orgosolo, Oliena, Nuoro, Orune, sont tous situés dans cet intérieur. L'iconographie populaire, notamment les murales d'Orgosolo, témoigne aujourd'hui encore de cette mémoire ambivalente.",
     codeEyebrow: 'Codex barbaricinus',
     codeTitle1: 'Le',
     codeTitle2: 'code barbaricino',
     codeP1:
       "Au cœur du banditisme sarde se trouve un ensemble de règles coutumières non écrites, analysées notamment par l'anthropologue Antonio Pigliaru dans son ouvrage La vendetta barbaricina come ordinamento giuridico (1959) : un véritable ordre juridique parallèle, avec ses obligations de vengeance, ses hiérarchies d'honneur, ses procédures de réconciliation (paghesa).",
     codeP2:
-      "Ce code a longtemps coexisté avec le droit de l'État italien, non comme une simple criminalité mais comme une culture juridique alternative — ce qui explique la difficulté des autorités à enrayer le phénomène par la seule répression.",
+      "Ce code a longtemps coexisté avec le droit de l'État italien, non comme une simple criminalité mais comme une culture juridique alternative, ce qui explique la difficulté des autorités à enrayer le phénomène par la seule répression.",
     codeRules: [
       { t: 'Vendetta', d: "Obligation de réponse à l'offense, dans des proportions codifiées." },
       { t: 'Omertà', d: "Silence communautaire protecteur face à l'enquête extérieure." },
@@ -231,7 +239,7 @@ export const fr = {
     figTitle1: 'Des figures',
     figTitle2: 'ambivalentes',
     figLead:
-      "Le banditisme sarde a produit des personnages à la fois traqués par la justice et mythifiés par la culture populaire — signe d'une relation complexe entre l'État et les communautés de l'intérieur.",
+      "Le banditisme sarde a produit des personnages à la fois traqués par la justice et mythifiés par la culture populaire, signe d'une relation complexe entre l'État et les communautés de l'intérieur.",
     fig1Date: 'Orgosolo, 1942 – 2025',
     fig1Name: 'Graziano Mesina',
     fig1Text:
@@ -245,13 +253,13 @@ export const fr = {
     distP1:
       "Contrairement à Cosa Nostra (Sicile), à la 'Ndrangheta (Calabre) ou à la Camorra (Campanie), le banditisme sarde ne constitue pas une organisation mafieuse hiérarchisée avec rites d'affiliation, structure de commandement unifiée et contrôle territorial économique.",
     distP2:
-      "Il s'agit d'un phénomène criminel réticulaire, fondé sur des cellules autonomes (souvent familiales ou villageoises), des codes coutumiers partagés, et un mode opératoire commun — sans gouvernance centralisée.",
+      "Il s'agit d'un phénomène criminel réticulaire, fondé sur des cellules autonomes (souvent familiales ou villageoises), des codes coutumiers partagés, et un mode opératoire commun, sans gouvernance centralisée.",
     distP3:
       "Cette distinction est importante, car elle change la nature des analyses judiciaires et sociologiques : on ne combat pas une coutume armée comme on combat une entreprise criminelle organisée.",
     distP4:
       "C'est aussi pour cela que les enquêtes judiciaires sur l'Anonima Sarda ont toujours identifié des individus et des groupes restreints, jamais une « organisation » au sens sicilien du terme.",
     transitionQuote: "« De la montagne au titre des journaux : 1960. »",
-    transitionLink: "Chapitre V — L'Anonima Sarda",
+    transitionLink: "Chapitre V, L'Anonima Sarda",
   },
 
   // ──────── Page Anonima Sarda ────────
@@ -259,16 +267,16 @@ export const fr = {
     metaTitle: 'Anonima Sarda · Enlèvements 1960-1997',
     chapterTitle1: 'Anonima',
     chapterTitle2: 'Sarda',
-    chapterSub: 'Le cycle des enlèvements contre rançon en Sardaigne, 1960 — 1997.',
+    chapterSub: 'Le cycle des enlèvements contre rançon en Sardaigne, 1960, 1997.',
     bigStatLabel: 'enlèvements estimés · 1960-1997',
     bigStatP1:
-      "Entre 1960 et 1997, la Sardaigne a été le théâtre d'environ cent cinquante enlèvements contre rançon documentés — phénomène criminel rapidement regroupé, dans la presse italienne, sous la dénomination imagée d'Anonima Sequestri Sarda.",
+      "Entre 1960 et 1997, la Sardaigne a été le théâtre d'environ cent cinquante enlèvements contre rançon documentés, phénomène criminel rapidement regroupé, dans la presse italienne, sous la dénomination imagée d'Anonima Sequestri Sarda.",
     bigStatP2:
       "Le terme « anonima » est trompeur : il ne désigne pas une société unique, mais la nature diffuse et sans visage d'un phénomène fait de cellules criminelles autonomes, souvent liées par la géographie (Barbagia, Supramonte) plutôt que par une hiérarchie.",
     modeEyebrow: 'Mode opératoire',
     modeTitle: 'Un schéma récurrent',
     modeSteps: [
-      { num: '01', t: 'Choix de la cible', d: 'Industriels, héritiers, entrepreneurs — profils à fort potentiel de rançon.' },
+      { num: '01', t: 'Choix de la cible', d: 'Industriels, héritiers, entrepreneurs, profils à fort potentiel de rançon.' },
       { num: '02', t: 'Enlèvement éclair', d: 'Souvent en Sardaigne même, parfois sur le continent, puis rapatriement insulaire.' },
       { num: '03', t: 'Séquestration prolongée', d: 'Dans les grottes et bergeries du Supramonte, sur plusieurs semaines ou mois.' },
       { num: '04', t: 'Négociation', d: 'Via intermédiaires, lettres codées, parfois pièces anatomiques envoyées aux familles.' },
@@ -281,9 +289,9 @@ export const fr = {
     balanceEyebrow: 'Bilan documentaire',
     balanceTitle: 'Aucun Porcu identifié parmi les membres documentés.',
     balanceP1:
-      "Les vérifications croisées effectuées dans le cadre de ce projet — registres généalogiques, presse locale, archives judiciaires, ouvrages historiographiques spécialisés — ne font apparaître aucun porteur du nom Porcu parmi les membres identifiés des groupes criminels liés à l'Anonima Sarda.",
+      "Les vérifications croisées effectuées dans le cadre de ce projet, registres généalogiques, presse locale, archives judiciaires, ouvrages historiographiques spécialisés, ne font apparaître aucun porteur du nom Porcu parmi les membres identifiés des groupes criminels liés à l'Anonima Sarda.",
     balanceP2:
-      "Cela n'exclut évidemment pas d'éventuelles découvertes futures — la recherche reste ouverte — mais confirme, en l'état, que la présence du patronyme dans l'île relève d'une histoire rurale, pastorale et familiale, et non d'une histoire criminelle.",
+      "Cela n'exclut évidemment pas d'éventuelles découvertes futures, la recherche reste ouverte, mais confirme, en l'état, que la présence du patronyme dans l'île relève d'une histoire rurale, pastorale et familiale, et non d'une histoire criminelle.",
     sourcesEyebrow: 'Sources consultées',
     sources: [
       { t: 'Registres généalogiques', d: 'Geneanet, FamilySearch, Antenati' },
@@ -293,15 +301,15 @@ export const fr = {
     ],
     transitionQuote:
       "« Revenons, maintenant, à la seule histoire qui importe : celle de la famille. »",
-    transitionLink: 'Chapitre VI — Généalogie',
+    transitionLink: 'Chapitre VI, Généalogie',
     timeline: [
       { periode: 'XIXᵉ siècle', date: '1800-1900', titre: 'Le banditisme pastoral ancien', texte: "Émergence du banditisme dit « d'honneur » dans la Barbagia, région montagneuse de l'intérieur. Codes coutumiers (barbaricino), vendetta, et résistance aux autorités piémontaises puis italiennes.", categorie: 'contexte' },
       { periode: 'Début XXᵉ', date: '1900-1950', titre: 'Banditisme résiduel', texte: "Figures marquantes comme Samuele Stocchino. L'économie pastorale isolée et la géographie accidentée entretiennent un phénomène criminel rural distinct des mafias méridionales.", categorie: 'contexte' },
       { periode: 'Années 1960', date: '1960-1969', titre: "Naissance de l'Anonima Sarda", texte: "Apparition des enlèvements contre rançon comme phénomène criminel organisé en cellules autonomes. Contrairement à Cosa Nostra ou la 'Ndrangheta, il ne s'agit pas d'une structure hiérarchique mais d'un mode opératoire partagé.", categorie: 'anonima' },
       { periode: 'Années 1970', date: '1970-1979', titre: 'Apogée des séquestres', texte: "Multiplication des enlèvements, souvent d'industriels ou d'héritiers. Séquestrations prolongées dans les grottes de la Barbagia et du Supramonte. L'État italien réagit par des opérations militaires dans l'intérieur.", categorie: 'anonima' },
-      { periode: '1968-1992', date: '1968', titre: 'Graziano Mesina', texte: "Bandit d'Orgosolo devenu figure médiatique, plusieurs fois évadé et capturé. Incarne l'ambiguïté populaire du banditisme sarde — à la fois traqué et mythifié.", categorie: 'figure' },
+      { periode: '1968-1992', date: '1968', titre: 'Graziano Mesina', texte: "Bandit d'Orgosolo devenu figure médiatique, plusieurs fois évadé et capturé. Incarne l'ambiguïté populaire du banditisme sarde, à la fois traqué et mythifié.", categorie: 'figure' },
       { periode: 'Années 1980', date: '1980-1989', titre: 'Durcissement législatif', texte: "Loi de 1991 sur le blocage des avoirs familiaux des personnes enlevées pour empêcher le paiement des rançons. Début du déclin du phénomène.", categorie: 'contexte' },
-      { periode: '1992', date: '1992-1998', titre: "Affaire Farouk Kassam", texte: "Enlèvement d'un enfant de 7 ans, libéré après sept mois — l'un des derniers séquestres médiatiquement marquants avant l'extinction progressive du phénomène.", categorie: 'anonima' },
+      { periode: '1992', date: '1992-1998', titre: "Affaire Farouk Kassam", texte: "Enlèvement d'un enfant de 7 ans, libéré après sept mois, l'un des derniers séquestres médiatiquement marquants avant l'extinction progressive du phénomène.", categorie: 'anonima' },
       { periode: '1997', date: '1997', titre: 'Dernier enlèvement recensé', texte: "Fin du cycle historique de l'Anonima Sarda. Bilan estimé : environ 150 enlèvements en Sardaigne entre 1960 et 1997, selon les sources judiciaires et académiques.", categorie: 'anonima' },
       { periode: "Aujourd'hui", date: '2000-2026', titre: 'Mémoire et historiographie', texte: "Le phénomène est désormais documenté par l'historiographie universitaire (travaux de Casalunga, Domenech) et par les archives de la presse régionale. Aucune occurrence du patronyme Porcu parmi les membres documentés des groupes criminels.", categorie: 'contexte' },
     ],
@@ -317,7 +325,7 @@ export const fr = {
     chapterTitle2: 'Porcu',
     chapterSub: 'Arbre en construction, méthode documentaire, appel à contribution.',
     intro:
-      "Tout ce qui précède — l'étymologie, la carte, l'histoire insulaire, la chronologie du banditisme — n'avait qu'un but : rendre lisible ce que chaque famille Porcu porte sans toujours le savoir. Cette dernière rubrique referme le cercle : elle ouvre la recherche concrète, nom par nom, acte par acte.",
+      "Tout ce qui précède, l'étymologie, la carte, l'histoire insulaire, la chronologie du banditisme, n'avait qu'un but : rendre lisible ce que chaque famille Porcu porte sans toujours le savoir. Cette dernière rubrique referme le cercle : elle ouvre la recherche concrète, nom par nom, acte par acte.",
     methodEyebrow: 'Méthode',
     methodTitle1: 'Six étapes',
     methodTitle2: 'pour',
@@ -325,11 +333,11 @@ export const fr = {
     methodLead:
       "Protocole recommandé pour toute recherche généalogique sérieuse sur un patronyme sarde, adaptable selon la branche familiale concernée.",
     methodSteps: [
-      { num: '01', titre: 'Centraliser les documents familiaux', texte: "Livrets de famille, actes, photographies, correspondances, passeports anciens. Tout ce qui est conservé dans les tiroirs des aînés a une valeur — y compris les souvenirs oraux transcrits dès que possible." },
+      { num: '01', titre: 'Centraliser les documents familiaux', texte: "Livrets de famille, actes, photographies, correspondances, passeports anciens. Tout ce qui est conservé dans les tiroirs des aînés a une valeur, y compris les souvenirs oraux transcrits dès que possible." },
       { num: '02', titre: 'Fixer les 3 à 5 générations récentes', texte: "Reconstituer d'abord les filiations connues via les actes français (mairies, Archives départementales, demande d'état civil en ligne). C'est la fondation sur laquelle tout le reste s'appuiera." },
-      { num: '03', titre: "Identifier la commune sarde d'origine", texte: 'Étape décisive. Priorité aux neuf communes de référence — Villaputzu, Lula, Ghilarza, San Vito, Nuoro, Buddusò, Samassi, Montresta, Sarule — mais toute autre piste documentée doit être suivie.' },
+      { num: '03', titre: "Identifier la commune sarde d'origine", texte: 'Étape décisive. Priorité aux neuf communes de référence, Villaputzu, Lula, Ghilarza, San Vito, Nuoro, Buddusò, Samassi, Montresta, Sarule, mais toute autre piste documentée doit être suivie.' },
       { num: '04', titre: 'Ouvrir les registres italiens', texte: "Portail Antenati (Archivi di Stato), FamilySearch, mairies sardes (richiesta d'atto), paroisses pour les registres antérieurs à l'état civil unifié (1866). La langue peut exiger une transcription latine ou sarde ancienne." },
-      { num: '05', titre: 'Vérifier chaque filiation', texte: 'Chaque lien père-fils / mère-fille doit être adossé à un acte de naissance, de mariage ou de décès consultable. Les homonymies sont fréquentes dans les villages sardes — redoublement de prénoms sur plusieurs générations.' },
+      { num: '05', titre: 'Vérifier chaque filiation', texte: 'Chaque lien père-fils / mère-fille doit être adossé à un acte de naissance, de mariage ou de décès consultable. Les homonymies sont fréquentes dans les villages sardes, redoublement de prénoms sur plusieurs générations.' },
       { num: '06', titre: "Règle d'or : aucune filiation sans acte probant", texte: "Mieux vaut une branche inachevée et honnête qu'un arbre fourni de suppositions. Toutes les hypothèses non vérifiées doivent apparaître comme telles, avec la mention « à documenter »." },
     ],
     archivesEyebrow: 'Ressources',
@@ -348,14 +356,14 @@ export const fr = {
     ],
     ethicalQuote:
       "« Ce site explore l'histoire culturelle du nom Porcu et le contexte du banditisme sarde, sans présumer de lien criminel pour l'ensemble des porteurs du nom. »",
-    ethicalSub: 'Positionnement éditorial — Archivio Porcu',
+    ethicalSub: 'Positionnement éditorial, Archivio Porcu',
     closing:
       "« Un arbre ne pousse qu'avec ceux qui en prennent soin. Merci de votre contribution. »",
     // Composants
     tree: {
       eyebrow: 'Arbre provisoire',
       title: 'Genealogia Porcu',
-      sub: "Structure de travail à compléter au fil des recherches. Les données présentées sont illustratives — aucune filiation n'est encore validée par acte probant.",
+      sub: "Structure de travail à compléter au fil des recherches. Les données présentées sont illustratives, aucune filiation n'est encore validée par acte probant.",
       generation: 'Génération',
       verified: 'Vérifié',
       toDocument: 'À documenter',
@@ -391,7 +399,7 @@ export const fr = {
       gdpr2Label: 'Durée de conservation :',
       gdpr2: '3 ans maximum à compter du dernier échange.',
       gdpr3Label: 'Vos droits :',
-      gdpr3: 'accès, rectification, effacement, opposition — exerçables à tout moment.',
+      gdpr3: 'accès, rectification, effacement, opposition, exerçables à tout moment.',
       gdpr4Label: 'Aucune publication nominative',
       gdpr4: ' sans votre accord écrit explicite et préalable.',
       consent:
@@ -438,17 +446,17 @@ export const fr = {
       s1Text:
         "Ce site est édité par un particulier dans le cadre d'un projet culturel et généalogique à vocation non commerciale.",
       s1Name: 'Nom',
-      s1NameVal: '[À compléter]',
+      s1NameVal: 'PORCU Harry',
       s1Email: 'Email',
-      s1EmailVal: '[contact@archivio-porcu.example] — à compléter',
+      s1EmailVal: 'contact@archivio-porcu.fr',
       s1Nature: 'Nature',
       s1NatureVal: 'Projet personnel, non commercial, à visée patrimoniale',
       s2Eyebrow: 'Hébergement',
       s2Title: 'Hébergeur du site',
       s2Company: 'Société',
-      s2CompanyVal: 'Vercel Inc.',
+      s2CompanyVal: 'LWS (Ligne Web Services)',
       s2Address: 'Adresse',
-      s2AddressVal: '340 S Lemon Ave #4133, Walnut, CA 91789, USA',
+      s2AddressVal: '10 rue Penthièvre, 75008 Paris, France',
       s2Site: 'Site',
       s3Eyebrow: 'Vocation éditoriale',
       s3Title: 'Nature du contenu publié',
@@ -469,6 +477,13 @@ export const fr = {
       s6Title: 'Juridiction',
       s6Text:
         "Le présent site est soumis au droit français et à la réglementation européenne (RGPD). Pour les personnes physiques résidant en Italie, les dispositions du décret législatif italien n° 196/2003 complètent ce cadre.",
+      s7Eyebrow: 'Conception',
+      s7Title: 'Création du site',
+      s7Text: 'Site conçu, développé et déployé par',
+      s7AgencyName: 'Hezign',
+      s7AgencyDesc: ', agence de design et développement web basée à Lyon, spécialisée dans la création de sites premium pour les projets éditoriaux et culturels.',
+      s7AgencyUrl: 'https://hezign.fr',
+      s7AgencyLink: 'hezign.fr',
       navNext: 'Suivant',
       navPrivacy: 'Politique de confidentialité →',
       navRights: 'Droits RGPD',
@@ -507,7 +522,7 @@ export const fr = {
       rights: [
         { t: 'Droit d\'accès', d: 'Obtenir une copie des données vous concernant.' },
         { t: 'Droit de rectification', d: 'Corriger toute information inexacte ou incomplète.' },
-        { t: 'Droit à l\'effacement', d: '« Droit à l\'oubli » — suppression de vos données.' },
+        { t: 'Droit à l\'effacement', d: '« Droit à l\'oubli », suppression de vos données.' },
         { t: 'Droit d\'opposition', d: 'Vous opposer à tout traitement.' },
         { t: 'Droit à la portabilité', d: 'Récupérer vos données dans un format réutilisable.' },
         { t: 'Droit à la limitation', d: 'Suspendre temporairement le traitement.' },
@@ -521,7 +536,7 @@ export const fr = {
       s7Eyebrow: '§ 7',
       s7Title: 'Cookies',
       s7Text:
-        "Ce site n'utilise aucun cookie de traçage, ni outil d'analyse statistique tiers (Google Analytics, etc.). Seuls les cookies strictement nécessaires au fonctionnement technique de l'hébergement Vercel peuvent être déposés ; ils ne contiennent aucune donnée personnelle.",
+        "Ce site n'utilise aucun cookie de traçage, ni outil d'analyse statistique tiers (Google Analytics, etc.). Seuls les cookies strictement nécessaires au fonctionnement technique de l'hébergement LWS peuvent être déposés ; ils ne contiennent aucune donnée personnelle.",
       s8Eyebrow: '§ 8',
       s8Title: 'Mises à jour',
       s8Text:

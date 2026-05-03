@@ -44,13 +44,13 @@ const tt = t.genealogy.tree;
               <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mb-1">{tt.birth}</div>
               <div class="text-sardaigne-encre/80">
                 {personne.naissance?.annee || '?'}<br/>
-                <span class="italic text-sardaigne-encre/60">{personne.naissance?.lieu || '—'}</span>
+                <span class="italic text-sardaigne-encre/60">{personne.naissance?.lieu || '-'}</span>
               </div>
             </div>
             <div>
               <div class="font-sans text-[0.65rem] tracking-widest uppercase text-sardaigne-sepia mb-1">{tt.death}</div>
               <div class="text-sardaigne-encre/80">
-                {personne.deces?.annee || '—'}<br/>
+                {personne.deces?.annee || '-'}<br/>
                 <span class="italic text-sardaigne-encre/60">{personne.deces?.lieu || ''}</span>
               </div>
             </div>

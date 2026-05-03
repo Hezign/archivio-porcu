@@ -1,0 +1,94 @@
+---
+import { useTranslations, pageSlugs } from '../i18n';
+import { langPrefix } from '../i18n/config';
+import type { Lang } from '../i18n/config';
+
+export interface Props { lang?: Lang; }
+const { lang = 'fr' } = Astro.props;
+const t = useTranslations(lang);
+const c = t.ui.cookies;
+const prefix = langPrefix(lang);
+const privacyPath = `${prefix}/${pageSlugs.legalPrivacy[lang]}/`;
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-md z-50 bg-sardaigne-encre text-sardaigne-parchemin shadow-2xl border border-sardaigne-rouge/40 hidden"
+  role="dialog"
+  aria-labelledby="cookie-title"
+  aria-describedby="cookie-message"
+>
+  <div class="p-5 md:p-6">
+    <div class="flex items-start gap-3 mb-3">
+      <span class="text-sardaigne-rouge text-xl leading-none mt-0.5">✦</span>
+      <div>
+        <div id="cookie-title" class="font-display text-lg leading-tight text-sardaigne-parchemin">
+          {c.title}
+        </div>
+      </div>
+    </div>
+
+    <p id="cookie-message" class="font-serif text-[0.88rem] leading-relaxed text-pierre-100 mb-4">
+      {c.message}
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        id="cookie-accept"
+        type="button"
+        class="bg-sardaigne-rouge hover:bg-sardaigne-rouge-sombre text-sardaigne-parchemin px-5 py-2.5 font-sans text-xs uppercase tracking-widest transition-colors"
+      >
+        {c.accept}
+      </button>
+      <a
+        href={privacyPath}
+        class="text-pierre-200 hover:text-sardaigne-parchemin underline font-sans text-xs"
+      >
+        {c.learnMore}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'archivio-porcu-cookies-accepted';
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+
+  // Affichage si pas encore accepté
+  try {
+    const accepted = localStorage.getItem(STORAGE_KEY);
+    if (!accepted && banner) {
+      // Léger délai pour ne pas perturber le chargement
+      setTimeout(() => {
+        banner.classList.remove('hidden');
+        banner.classList.add('animate-slide-up');
+      }, 800);
+    }
+  } catch (err) {
+    // localStorage indisponible (mode privé strict) : on n'affiche pas le bandeau
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, new Date().toISOString());
+    } catch (err) { /* ignore */ }
+    banner?.classList.add('hidden');
+  });
+</script>
+
+<style>
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+</style>

@@ -1,4 +1,4 @@
-// Arbre généalogique — structure de démonstration
+// Arbre généalogique, structure de démonstration
 // À remplacer par les données réelles au fur et à mesure des recherches
 // RÈGLE D'OR : ne jamais relier deux Porcu sans acte probant
 
