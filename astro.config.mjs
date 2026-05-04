@@ -1,7 +1,15 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://porcu-sardaigne.com',
+  site: 'https://archivio-porcu.fr',
+  integrations: [
+    tailwind(),
+    sitemap({
+      changefreq: 'monthly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
 });
