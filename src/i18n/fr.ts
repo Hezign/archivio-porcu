@@ -44,6 +44,29 @@ export const fr = {
   // ──────── Page Accueil ────────
   home: {
     metaTitle: 'Porcu · Archivio culturel du patronyme sarde',
+    metaDescription:
+      "Origine, étymologie sarde et généalogie du patronyme Porcu : de la Barbagia aux mines de Lorraine, un projet culturel documenté sur le nom et son histoire.",
+    faqEyebrow: 'Questions fréquentes',
+    faqTitle1: 'Ce que',
+    faqTitle2: "l'on demande souvent",
+    faq: [
+      {
+        q: "D'où vient le nom de famille Porcu ?",
+        a: "Le patronyme Porcu vient du mot sarde porcu, issu du lexique pastoral. C'est un nom de famille sarde ancien, attesté dès la période moderne, surtout dans le sud de l'île et la Barbagia intérieure.",
+      },
+      {
+        q: 'Le nom Porcu est-il lié au banditisme sarde ?',
+        a: "Non. Ce site documente le banditisme sarde comme phénomène historique, mais aucune occurrence du patronyme Porcu n'apparaît parmi les membres identifiés de l'Anonima Sarda. Le nom relève d'une histoire rurale et familiale.",
+      },
+      {
+        q: 'Comment faire sa généalogie pour un nom sarde ?',
+        a: "En centralisant les documents familiaux, en remontant les actes français, puis en identifiant la commune sarde d'origine pour ouvrir les registres italiens (Antenati, FamilySearch). Aucune filiation sans acte probant.",
+      },
+      {
+        q: 'Que signifie Archivio Porcu ?',
+        a: "Archivio Porcu est un projet culturel et généalogique qui réunit l'étymologie, l'histoire de la Sardaigne, la diaspora vers la Lorraine et l'arbre généalogique des porteurs du nom Porcu.",
+      },
+    ],
     heroEyebrow: 'Sardegna · 1850, 2026',
     heroTitle1: 'Un nom,',
     heroTitle2: 'une île,',

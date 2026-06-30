@@ -42,6 +42,29 @@ export const it = {
 
   home: {
     metaTitle: 'Porcu · Archivio culturale del cognome sardo',
+    metaDescription:
+      "Origine, etimologia sarda e genealogia del cognome Porcu: dalla Barbagia alle miniere della Lorena, un progetto culturale documentato sul nome e la sua storia.",
+    faqEyebrow: 'Domande frequenti',
+    faqTitle1: 'Le domande',
+    faqTitle2: 'più comuni',
+    faq: [
+      {
+        q: 'Da dove viene il cognome Porcu?',
+        a: "Il cognome Porcu deriva dalla parola sarda porcu, dal lessico pastorale. È un cognome sardo antico, attestato fin dall'epoca moderna, soprattutto nel sud dell'isola e nella Barbagia interna.",
+      },
+      {
+        q: 'Il cognome Porcu è legato al banditismo sardo?',
+        a: "No. Questo sito documenta il banditismo sardo come fenomeno storico, ma nessuna occorrenza del cognome Porcu compare tra i membri identificati dell'Anonima Sarda. Il nome appartiene a una storia rurale e familiare.",
+      },
+      {
+        q: 'Come fare la genealogia di un cognome sardo?',
+        a: "Centralizzando i documenti familiari, risalendo gli atti, poi identificando il comune sardo d'origine per aprire i registri italiani (Antenati, FamilySearch). Nessuna filiazione senza atto probante.",
+      },
+      {
+        q: 'Cosa significa Archivio Porcu?',
+        a: "Archivio Porcu è un progetto culturale e genealogico che riunisce l'etimologia, la storia della Sardegna, la diaspora verso la Lorena e l'albero genealogico dei portatori del cognome Porcu.",
+      },
+    ],
     heroEyebrow: 'Sardegna · 1850, 2026',
     heroTitle1: 'Un cognome,',
     heroTitle2: "un'isola,",

@@ -1,0 +1,26 @@
+# Archivio Porcu
+
+> Projet culturel et généalogique sur le patronyme sarde Porcu : étymologie, histoire de la Sardaigne, banditisme sarde, diaspora vers la Lorraine et généalogie documentée. Auteur : Harry Porcu (Lyon, France). Aucune affirmation sans source, aucune filiation sans acte probant.
+
+Langues : français (par défaut, /), italien (/it/), anglais (/en/).
+
+## Pages principales (français)
+
+- [Accueil](https://archivio-porcu.fr/) : présentation du projet, étymologie, diaspora, FAQ.
+- [Le nom Porcu](https://archivio-porcu.fr/le-nom-porcu/) : étymologie sarde, attestations, cartographie des communes.
+- [Sardaigne](https://archivio-porcu.fr/sardaigne/) : identité, langue sarde, drapeau Quattro Mori, repères historiques.
+- [Banditisme sarde](https://archivio-porcu.fr/banditisme-sarde/) : phénomène rural, code barbaricino, Barbagia, Orgosolo.
+- [Anonima Sarda](https://archivio-porcu.fr/anonima-sarda/) : enlèvements contre rançon 1960-1997, contexte et bilan.
+- [Généalogie](https://archivio-porcu.fr/genealogie/) : arbre en construction, méthode documentaire, appel à contribution.
+
+## Points clés
+
+- Le nom Porcu vient du sarde porcu (lexique pastoral) ; patronyme sarde ancien attesté dès la période moderne.
+- Aucune occurrence du patronyme Porcu parmi les membres identifiés de l'Anonima Sarda : le nom relève d'une histoire rurale et familiale.
+- Diaspora : émigration des années 1950 de la Barbagia vers le bassin houiller lorrain (Bousbach, Forbach).
+
+## Légal
+
+- [Mentions légales](https://archivio-porcu.fr/mentions-legales/)
+- [Confidentialité](https://archivio-porcu.fr/mentions-legales/confidentialite/)
+- [Retrait / rectification](https://archivio-porcu.fr/mentions-legales/retrait/)

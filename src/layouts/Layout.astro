@@ -10,12 +10,18 @@ export interface Props {
   description?: string;
   lang?: Lang;
   pageKey?: PageKey;
+  ogImage?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description, lang = 'fr', pageKey = 'home' } = Astro.props;
+const { title, description, lang = 'fr', pageKey = 'home', ogImage, jsonLd } = Astro.props;
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 const prefix = langPrefix(lang);
+
+// Base absolue du site (pour canonical, hreflang, OG, JSON-LD)
+const siteBase = (Astro.site?.toString() ?? 'https://archivio-porcu.fr/').replace(/\/$/, '');
+const absUrl = (path: string) => `${siteBase}${path.startsWith('/') ? path : `/${path}`}`;
 
 const nav = [
   { key: 'home' as PageKey, label: t.ui.nav.home, num: 'I' },
@@ -34,12 +40,86 @@ function pathFor(key: PageKey, targetLang: Lang = lang): string {
 }
 
 const hreflangs: { lang: Lang; href: string }[] = [
-  { lang: 'fr', href: pathFor(pageKey, 'fr') },
-  { lang: 'it', href: pathFor(pageKey, 'it') },
-  { lang: 'en', href: pathFor(pageKey, 'en') },
+  { lang: 'fr', href: absUrl(pathFor(pageKey, 'fr')) },
+  { lang: 'it', href: absUrl(pathFor(pageKey, 'it')) },
+  { lang: 'en', href: absUrl(pathFor(pageKey, 'en')) },
 ];
 
-const desc = description ?? t.home.metaTitle;
+// Description : prop fournie, sinon metaDescription de la home, sinon le titre
+const homeMeta = t.home as { metaDescription?: string; metaTitle: string };
+const desc = description ?? homeMeta.metaDescription ?? homeMeta.metaTitle;
+
+// URL canonique auto-référente (absolue, version courante)
+const canonical = absUrl(pathFor(pageKey, lang));
+
+// Open Graph
+const ogLocaleMap: Record<Lang, string> = { fr: 'fr_FR', it: 'it_IT', en: 'en_US' };
+const ogAltLocales = (['fr', 'it', 'en'] as Lang[]).filter((l) => l !== lang).map((l) => ogLocaleMap[l]);
+const ogImageUrl = absUrl(ogImage ?? '/images/flag-sardegna-modern.png');
+
+// Auteur / éditeur du projet
+const author = {
+  '@type': 'Person',
+  name: 'Harry Porcu',
+  url: siteBase + '/',
+  jobTitle: lang === 'fr' ? 'Fondateur du projet Archivio Porcu' : lang === 'it' ? 'Fondatore del progetto Archivio Porcu' : 'Founder of the Archivio Porcu project',
+  address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
+};
+
+// Fil d'Ariane : Accueil > page courante (sauf sur la home)
+const breadcrumbItems = [{ name: t.ui.nav.home, url: absUrl(pathFor('home', lang)) }];
+if (pageKey !== 'home') {
+  breadcrumbItems.push({ name: title.split(' · ')[0].split(',')[0].trim(), url: canonical });
+}
+const breadcrumbLd = {
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.name,
+    item: it.url,
+  })),
+};
+
+// Signal de fraîcheur : date de build (ISO, sans l'heure)
+const lastModified = new Date().toISOString().slice(0, 10);
+
+// Graphe JSON-LD par défaut : site + page + auteur + fil d'Ariane
+const defaultJsonLd: Record<string, any>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': siteBase + '/#website',
+    url: siteBase + '/',
+    name: 'Archivio Porcu',
+    inLanguage: lang,
+    description: desc,
+    publisher: { '@id': siteBase + '/#person' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': siteBase + '/#person',
+    ...author,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': canonical + '#webpage',
+    url: canonical,
+    name: title,
+    description: desc,
+    inLanguage: lang,
+    isPartOf: { '@id': siteBase + '/#website' },
+    author: { '@id': siteBase + '/#person' },
+    dateModified: lastModified,
+    primaryImageOfPage: ogImageUrl,
+  },
+  { '@context': 'https://schema.org', ...breadcrumbLd },
+];
+
+const extraJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allJsonLd = [...defaultJsonLd, ...extraJsonLd];
 ---
 
 <!doctype html>
@@ -49,12 +129,42 @@ const desc = description ?? t.home.metaTitle;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={desc} />
   <meta name="theme-color" content="#1a150d" />
+  <meta name="author" content="Harry Porcu" />
+  <meta name="google-site-verification" content="rAubYS2UVDSAxLbKeSP9bA5b6GP8SB9LcvbmsZvB6kY" />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Archivio Porcu" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={desc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:alt" content="Archivio Porcu" />
+  <meta property="og:locale" content={ogLocaleMap[lang]} />
+  {ogAltLocales.map((l) => <meta property="og:locale:alternate" content={l} />)}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={desc} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <meta name="msapplication-TileColor" content="#1a150d" />
   {hreflangs.map(h => (
     <link rel="alternate" hreflang={h.lang} href={h.href} />
   ))}
-  <link rel="alternate" hreflang="x-default" href={pathFor(pageKey, 'fr')} />
+  <link rel="alternate" hreflang="x-default" href={absUrl(pathFor(pageKey, 'fr'))} />
   <title>{title}</title>
+
+  {allJsonLd.map((node) => (
+    <script type="application/ld+json" set:html={JSON.stringify(node)} />
+  ))}
 </head>
 <body>
 

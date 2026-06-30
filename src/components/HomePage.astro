@@ -17,9 +17,20 @@ function pathFor(key: keyof typeof pageSlugs): string {
   if (!slug) return prefix === '' ? '/' : `${prefix}/`;
   return `${prefix}/${slug}/`;
 }
+
+// Données structurées FAQPage (réponses IA + rich results Google)
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.home.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 
-<Layout title={t.home.metaTitle} description={t.home.metaTitle} lang={lang} pageKey="home">
+<Layout title={t.home.metaTitle} description={t.home.metaDescription} lang={lang} pageKey="home" jsonLd={faqJsonLd}>
 
   <!-- HERO -->
   <section class="relative overflow-hidden min-h-[92vh] flex items-center border-b border-sardaigne-encre/15">
@@ -188,6 +199,35 @@ function pathFor(key: keyof typeof pageSlugs): string {
           {t.home.diasporaCta}
           <span>→</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-sardaigne-parchemin/40 border-y border-sardaigne-encre/15">
+    <div class="max-w-4xl mx-auto px-6 py-24">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="h-[1px] w-16 bg-sardaigne-rouge"></span>
+        <span class="eyebrow">{t.home.faqEyebrow}</span>
+      </div>
+      <h2 class="font-display text-4xl md:text-5xl text-sardaigne-encre leading-tight mb-12">
+        {t.home.faqTitle1} <span class="text-sardaigne-rouge italic">{t.home.faqTitle2}</span>
+      </h2>
+
+      <div class="divide-y divide-sardaigne-encre/15 border-t border-sardaigne-encre/15">
+        {t.home.faq.map((item) => (
+          <details class="group py-6">
+            <summary class="flex items-start justify-between gap-6 cursor-pointer list-none">
+              <h3 class="font-display text-xl md:text-2xl text-sardaigne-encre group-open:text-sardaigne-rouge transition-colors">
+                {item.q}
+              </h3>
+              <span class="text-sardaigne-rouge text-2xl leading-none shrink-0 transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="font-sans text-sardaigne-encre/80 leading-relaxed mt-4 max-w-3xl">
+              {item.a}
+            </p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
