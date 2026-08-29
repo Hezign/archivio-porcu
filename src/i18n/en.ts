@@ -91,12 +91,12 @@ export const en = {
     indexLead:
       "From the etymology of the name to the timeline of the 1960-1997 kidnappings, through the cartography of the communes and the genealogical tree under construction, each section is a fragment of the story.",
     chapters: [
-      { num: 'II', title: 'The Porcu name', desc: 'Sardinian etymology, attestations, cartography of the communes.' },
-      { num: 'III', title: 'Sardinia, identity', desc: 'Culture, language, Quattro Mori flag, insular history.' },
-      { num: 'IV', title: 'Sardinian banditry', desc: 'Rural phenomenon, codes of honour, Barbagia and Orgosolo.' },
-      { num: 'V', title: 'Anonima Sarda', desc: 'Kidnappings 1960-1997, context, historiographical assessment.' },
-      { num: 'VI', title: 'Genealogy', desc: 'Tree, archives, calls for contributions from name bearers.' },
-      { num: '✦', title: 'Method & sources', desc: 'Geneanet, FamilySearch, Antenati, all documentary paths.' },
+      { num: 'I', title: 'The Porcu name', desc: 'Sardinian etymology, attestations, cartography of the communes.' },
+      { num: 'II', title: 'Sardinia, identity', desc: 'Culture, language, Quattro Mori flag, insular history.' },
+      { num: 'III', title: 'Sardinian banditry', desc: 'Rural phenomenon, codes of honour, Barbagia and Orgosolo.' },
+      { num: 'IV', title: 'Anonima Sarda', desc: 'Kidnappings 1960-1997, context, historiographical assessment.' },
+      { num: 'V', title: 'Genealogy', desc: 'Tree, archives, calls for contributions from name bearers.' },
+      { num: 'VI', title: 'Method & sources', desc: 'Geneanet, FamilySearch, Antenati, all documentary paths.' },
     ],
     diasporaEyebrow: 'Diaspora',
     diasporaTitle1: 'From',

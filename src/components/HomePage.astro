@@ -28,6 +28,25 @@ const faqJsonLd = {
     acceptedAnswer: { '@type': 'Answer', text: item.a },
   })),
 };
+
+// Jeu d'icônes cohérent pour l'index des 6 chapitres.
+// Trait fin 1.25, sans remplissage, angles arrondis, currentColor (rouge Sardaigne) — style gravure éditoriale.
+const iconAttrs =
+  'viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"';
+const chapterIcons = [
+  // I — Le nom Porcu : plume d'oie (étymologie, écriture)
+  `<svg ${iconAttrs}><path d="M4 20c1-6 4-8 8-12 2-2 5-3 8-3 0 3-1 6-3 8-4 4-6 6-13 7z"/><path d="M4 20l5-5"/></svg>`,
+  // II — Sardaigne, identité : croix de Saint-Georges + Quattro Mori
+  `<svg ${iconAttrs}><path d="M12 2.5v19M2.5 12h19"/><circle cx="6.5" cy="6.5" r="1.35"/><circle cx="17.5" cy="6.5" r="1.35"/><circle cx="6.5" cy="17.5" r="1.35"/><circle cx="17.5" cy="17.5" r="1.35"/></svg>`,
+  // III — Banditisme sarde : sommets du Supramonte / Barbagia
+  `<svg ${iconAttrs}><path d="M2.5 20h19"/><path d="M4 20l5.5-11 3.5 6 2.5-4L21 20"/></svg>`,
+  // IV — Anonima Sarda : masque (anonymat, enlèvements)
+  `<svg ${iconAttrs}><path d="M5 7.5c2-1 4-1.5 7-1.5s5 .5 7 1.5c0 6-3 11-7 11s-7-5-7-11z"/><path d="M9.5 11h.01M14.5 11h.01"/><path d="M10 14.5c1 .7 3 .7 4 0"/></svg>`,
+  // V — Généalogie : arbre de filiation
+  `<svg ${iconAttrs}><circle cx="12" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M12 7v5M6 17v-5h12v5"/></svg>`,
+  // VI — Méthode & sources : registre ouvert
+  `<svg ${iconAttrs}><path d="M12 6.5v13"/><path d="M12 6.5C10 5 7 5 4 5.5v13c3-.5 6-.5 8 1 2-1.5 5-1.5 8-1v-13c-3-.5-6-.5-8 1z"/></svg>`,
+];
 ---
 
 <Layout title={t.home.metaTitle} description={t.home.metaDescription} lang={lang} pageKey="home" jsonLd={faqJsonLd}>
@@ -152,13 +171,19 @@ const faqJsonLd = {
           const keyMap = ['name', 'sardinia', 'banditry', 'anonima', 'genealogy', 'genealogy'] as const;
           const href = pathFor(keyMap[i]);
           return (
-            <a href={href} class="group bg-sardaigne-encre hover:bg-pierre-900 p-8 transition-colors relative overflow-hidden">
-              <div class="font-display text-6xl italic text-sardaigne-rouge/80 mb-4 group-hover:text-sardaigne-rouge transition-colors">
-                {item.num}
+            <a href={href} class="group flex flex-col bg-sardaigne-encre hover:bg-pierre-900 p-8 transition-colors relative overflow-hidden">
+              <div class="flex items-center justify-between mb-7">
+                <span
+                  class="text-sardaigne-rouge/85 group-hover:text-sardaigne-rouge transition-colors"
+                  set:html={chapterIcons[i]}
+                />
+                <span class="font-mono text-xs text-sardaigne-parchemin/40 group-hover:text-sardaigne-rouge transition-colors" style="letter-spacing:0.25em;">
+                  {item.num}
+                </span>
               </div>
               <h3 class="font-display text-2xl text-sardaigne-parchemin mb-3">{item.title}</h3>
               <p class="font-serif text-sm text-pierre-200 leading-relaxed">{item.desc}</p>
-              <div class="mt-6 font-sans text-[0.7rem] uppercase text-sardaigne-parchemin/60 group-hover:text-sardaigne-rouge transition-colors" style="letter-spacing:0.2em;">
+              <div class="mt-auto pt-7 font-sans text-[0.7rem] uppercase text-sardaigne-parchemin/60 group-hover:text-sardaigne-rouge transition-colors" style="letter-spacing:0.2em;">
                 {t.ui.read} →
               </div>
             </a>

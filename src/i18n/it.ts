@@ -91,12 +91,12 @@ export const it = {
     indexLead:
       "Dall'etimologia del cognome alla cronologia dei sequestri 1960-1997, passando per la cartografia dei comuni e l'albero genealogico in costruzione, ogni sezione è un frammento del racconto.",
     chapters: [
-      { num: 'II', title: 'Il cognome Porcu', desc: 'Etimologia sarda, attestazioni, cartografia dei comuni.' },
-      { num: 'III', title: 'Sardegna, identità', desc: 'Cultura, lingua, bandiera Quattro Mori, storia insulare.' },
-      { num: 'IV', title: 'Banditismo sardo', desc: "Fenomeno rurale, codici d'onore, Barbagia e Orgosolo." },
-      { num: 'V', title: 'Anonima Sarda', desc: 'Sequestri 1960-1997, contesto, bilancio storiografico.' },
-      { num: 'VI', title: 'Genealogia', desc: 'Albero, archivi, appelli ai portatori del cognome.' },
-      { num: '✦', title: 'Metodo & fonti', desc: 'Geneanet, FamilySearch, Antenati, tutte le vie documentarie.' },
+      { num: 'I', title: 'Il cognome Porcu', desc: 'Etimologia sarda, attestazioni, cartografia dei comuni.' },
+      { num: 'II', title: 'Sardegna, identità', desc: 'Cultura, lingua, bandiera Quattro Mori, storia insulare.' },
+      { num: 'III', title: 'Banditismo sardo', desc: "Fenomeno rurale, codici d'onore, Barbagia e Orgosolo." },
+      { num: 'IV', title: 'Anonima Sarda', desc: 'Sequestri 1960-1997, contesto, bilancio storiografico.' },
+      { num: 'V', title: 'Genealogia', desc: 'Albero, archivi, appelli ai portatori del cognome.' },
+      { num: 'VI', title: 'Metodo & fonti', desc: 'Geneanet, FamilySearch, Antenati, tutte le vie documentarie.' },
     ],
     diasporaEyebrow: 'Diaspora',
     diasporaTitle1: 'Dalla',
